@@ -1,0 +1,128 @@
+.container--sm {
+  max-width: calc(1140px + 5.6rem) !important;
+}
+
+.welcome {
+  padding: 3rem 0;
+  background: linear-gradient(90deg,rgb(83, 146, 249) 0,#4097e7 51%,#218bee);
+  color: #fff;
+}
+
+.section {
+  .media-layout {
+    margin-top: 3rem;
+    img {
+      width: 55px;
+      height: 70px;
+    }
+    .media__title {
+      margin: 1.5rem 0 .875rem;
+      font-size: 1.125rem;
+    }
+    p {
+      color: #555;
+    }
+  }
+}
+
+.account {
+  margin-top: -6.875rem;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 1px 1px 1px rgb(232, 232, 233);
+  border-radius: .625rem;
+  .account__title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+    .input-group__label {
+      position: relative;
+      font-weight: 700
+    }
+  }
+
+  .new_user>* {
+    margin-top: 2rem;
+  }
+
+  .new_user {
+    .fix-borderRadius {
+      padding: .5rem 1.25rem;
+      height: 3rem;
+      border: 1px solid #e6e6e6;
+      border-radius: 3rem;
+    }
+
+    .input-group {
+      .input {
+        border-right: none;
+        transition: all .3s;
+        font-size: 14px;
+      }
+
+      .input-group-text {
+        background-color: #fff !important;
+        border: 1px solid #e6e6e6;
+        border-left: none;
+        border-top-right-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+      }
+    }
+
+    .btn-login {
+      padding: .5rem 1.25rem;
+      width: 100%;
+      background-image: linear-gradient(90deg,
+      rgb(83, 146, 249) 0,#39a1f6 51%,#389af6);
+    }
+
+    .center-xs {
+      text-align: center;
+      .mt--30 {
+        margin-top: 1em;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .account__footer>* {
+    margin-top: 2rem;
+  }
+
+  .account__footer {
+    text-align: center;
+    .sign-social {
+      padding: .5rem 1.25rem;
+      height: 3rem;
+      width: 100%;
+      border: 1px solid rgb(83, 146, 249);
+      border-radius: 3rem;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .omiauth-gmail {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.footer {
+  margin-top: 5rem;
+  .container--md {
+    border-top: 1px solid #f2f2f2;
+    padding: 24px 15px;
+    font-weight: 500;
+    letter-spacing: .23px;
+    .p--small {
+      font-size: 14px;
+      color: #999;
+      line-height: 5px;
+    }
+  }
+}

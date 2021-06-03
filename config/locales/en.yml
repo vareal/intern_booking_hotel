@@ -1,33 +1,38 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  devise:
+    sessions:
+      new:
+        account-title: Sign in
+        input-group-lable: Login for more experiences
+        email-input: Email
+        email-password: Password
+        submit: Sign in
+        reset: Reset your password?
+        link-reset: Click here
+        sigin-in: Don't have an account?
+        link-sigin: Sign up
+  layouts:
+    devise:
+      application:
+        welcome-title: Sign up for more promotions and benefits
+        welcome-desc: Swift, convenient, and safe.
+                      Sign up now for more interests.
+        media-title-1: Lux Credit
+        media-content-1: Earn Lux Coins for each successful
+                       booking and use them for your next trips.
+        media-title-2: Smart functions
+        media-content-2: Check-in and check your receipts
+                         offline. Refund faster and change calendar easier.
+        media-title-3: Simple payment
+        media-content-3: Save card information in My Cards,
+                         much safer and convenient for the next payment.
+        media-title-4: New promotions every day
+        media-content-4: Update promotions from Luxstay and
+                         choose great accommodation at your budget.
+        or: "OR"
+        omiauth-fb: "Continue with Facebook"
+        omiauth-gg: "Continue with Gmail"
+        footer:
+          p1: Intern Booking Hotel
+          p2: Vareal Vietnam
+          p3: Business Registration Certificate Number 0108308449
