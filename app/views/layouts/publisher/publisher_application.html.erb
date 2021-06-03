@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PublisherPage</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
+
+  <body data-scrollbar-auto-hide="n"
+    class="hold-transition sidebar-mini layout-fixed">
+    <div id="manager-page">
+      <div class="wrapper">
+        <%= render "layouts/publisher/layout/header" %>
+        <%= render "layouts/publisher/layout/sidebar"  %>
+
+        <div class="content-wrapper">
+          <div class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h3 class="m-0 text-dark">Publisher Page</h3>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                      <%= link_to "Home", publisher_publisher_pages_path %>
+                    </li>
+                    <li class="breadcrumb-item active">
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-wrapper">
+            <%= yield %>
+          </div>
+        </div>
+      <div>
+    </div>
+  </body>
+</html>

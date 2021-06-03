@@ -1,0 +1,64 @@
+#manager-page {
+  .main-sidebar {
+    .sidebar {
+      nav.mt-2 {
+        .nav-pills {
+          .nav-item {
+            .nav-link {
+              color: #54667a;
+              p {
+                margin-left: 10px;
+              }
+            }
+
+            .active {
+              background: #f2f7f8;
+              color: #009efb;
+              border-left: 3px solid #009efb;
+            }
+
+            .nav-link:hover {
+              background-color: #f3f3f3 !important;
+              color: #009efb;
+              border-left: 3px solid #009efb;
+            }
+          }
+        }
+      }
+    }
+  }
+  .main-header {
+    background-color: #009efb;
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          color: #fff;
+        }
+      }
+    }
+
+    .form-inline {
+      .input-group {
+        .form-control {
+          width: 10em;
+          border-radius: 20px 0 0 20px;
+          color: rgb(34, 33, 33);
+          background: #f2f7f8;
+          transition: width 2s;
+        }
+
+        .form-control:hover {
+          width: 12em;
+        }
+
+        .input-group-append {
+          button {
+            border-radius: 0 20px 20px 0;
+            background: #f2f7f8;
+          }
+        }
+      }
+    }
+  }
+}
+
