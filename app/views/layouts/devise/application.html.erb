@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
+
+  <body>
+    <div class="welcome">
+      <div class="container container--sm">
+        <div class="row">
+          <div class="col-md-7 col-xs-12">
+            <h1 class="welcome__title"><%= t ".welcome-title" %></h1>
+            <p class="welcome__desc"><%= t ".welcome-desc" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container container--sm">
+        <div class="row">
+          <div class="col-md-8 col-xs-12 last-xs first-md">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="media-layout">
+                  <%= image_tag Settings.media_layout.image_1 %>
+                  <h3 class="media__title"><%= t "media-title-1" %></h3>
+                  <p class="media__content m--0"><%= t "media-content-1" %></p>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="media-layout">
+                  <%= image_tag Settings.media_layout.image_2 %>
+                  <h3 class="media__title"><%= t ".media-title-2" %></h3>
+                  <p class="media__content m--0"><%= t ".media-content-2" %></p>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="media-layout">
+                  <%= image_tag Settings.media_layout.image_3 %>
+                  <h3 class="media__title"><%= t ".media-title-3" %></h3>
+                  <p class="media__content m--0"><%= t ".media-content-3" %></p>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="media-layout">
+                  <%= image_tag Settings.media_layout.image_4 %>
+                  <h3 class="media__title"><%= t ".media-title-4" %></h3>
+                  <p class="media__content m--0"><%= t ".media-content-4" %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xs-12 first-xs">
+            <div class="account">
+              <div>
+                <%= yield %>
+                <div class="account__footer">
+                  <div class="center-xs">
+                    <%= t ".or" %>
+                  </div>
+                  <div class="account-omiauth">
+                    <div class="omiauth-facebook">
+                      <%= link_to "#", class: "btn sign-social" do %>
+                        <%= t ".omiauth-fb" %>
+                        <span>
+                          <%= image_tag Settings.omiauth.facebook %>
+                        </span>
+                      <% end %>
+                    <div>
+                    <div class="omiauth-gmail">
+                      <%= link_to "#", class: "btn sign-social" do %>
+                        <%= t ".omiauth-gg" %>
+                        <span>
+                          <%= image_tag Settings.omiauth.google %>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container container--md">
+        <div class="row middle-md center-xs start-md">
+          <div class="col-xs-12 text-center">
+            <p class="p--small"><%= t ".footer.p1" %></p>
+            <p class="p--small"><%= t ".footer.p2" %></p>
+            <p class="p--small"><%= t ".footer.p3" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

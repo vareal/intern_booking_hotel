@@ -1,0 +1,8 @@
+media_layout:
+  image_1: "https://www.luxstay.com/account/coins@2x.png"
+  image_2: "https://www.luxstay.com/account/top-sales@2x.png"
+  image_3: "https://www.luxstay.com/account/wallet@2x.png"
+  image_4: "https://www.luxstay.com/account/backpack@2x.png"
+omiauth:
+  facebook: "https://cdn6.agoda.net/images/universal-login/facebook-logo.svg"
+  google: "https://cdn6.agoda.net/images/universal-login/google-logo-v2.svg"
