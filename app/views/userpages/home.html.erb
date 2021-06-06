@@ -1,0 +1,44 @@
+<section class="page-home wapper">
+  <div class="container container--sm section">
+    <div class="mt--42"></div>
+    <div class="big-banner d-none d-sm-block">
+      <div class="bannerSliderPC">
+        <div class="slick-list draggable">
+          <div class="slick-item">
+            <%= link_to "#" do %>
+              <%= image_tag Settings.banner.image_1 %>
+            <% end %>
+          </div>
+          <div class="slick-item">
+            <%= link_to "#" do %>
+              <%= image_tag Settings.banner.image_2 %>
+            <% end %>
+          </div>
+          <div class="slick-item">
+            <%= link_to "#" do %>
+              <%= image_tag Settings.banner.image_3 %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt--42"></div>
+  </div>
+  <div class="container container--sm section">
+    <div class="greeting section">
+      <div class="title mb--12">
+        <h3><%= t ".title" %></h3>
+        <p class="mb-6"><%= t ".title-child" %></p>
+        <% unless  user_signed_in? %>
+          <p>
+            <%= link_to t ".unless-signin.login" , new_user_session_path %>
+            <p class="text-lowercase"><%= t ".or" %></p>
+            <%= link_to t ".unless-signin.register",
+              new_user_registration_path %>
+            <%= t ".unless-signin.text" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
