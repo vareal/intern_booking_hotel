@@ -1,0 +1,16 @@
+.page-home {
+  .slick-item {
+    img {
+      width: 100%;
+      border-radius: 20px;
+      height: 267px;
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
+    right: 36px;
+    bottom: 10px;
+    width: auto;
+  }
+}

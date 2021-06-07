@@ -36,3 +36,13 @@ en:
           p1: Intern Booking Hotel
           p2: Vareal Vietnam
           p3: Business Registration Certificate Number 0108308449
+  userpages:
+    home:
+      title: Welcome to Luxstay!
+      title-child: Book homes, homestay, car rental, experience and more on
+        Luxstay
+      unless-signin:
+        login: Login
+        register: Register
+        or: OR
+        text: to enjoy!
