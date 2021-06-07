@@ -1,24 +1,24 @@
-<% provide(:page_title, "List Cities") %>
+<% provide :page_title, t(".cities-title") %>
 <% provide(:active_city, "active") %>
 
 <div class="search-bar"> 
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  + Add New
+  + <%= t(".btn-add-new") %>
   </button>
 
   <form class="d-flex">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-success" type="submit"><%= t(".search-input") %></button>
   </form>
 </div>
 <table class="table list-rooms">
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">City</th>
-      <th scope="col">Image</th>
-      <th scope="col">Rooms Quatity</th>
-      <th scope="col">Options</th>
+      <th scope="col"><%= t(".city-col") %></th>
+      <th scope="col"><%= t(".image-col") %></th>
+      <th scope="col"><%= t(".room-quantity-col") %></th>
+      <th scope="col"><%= t(".options-col") %></th>
     </tr>
   </thead>
   <tbody>
@@ -86,7 +86,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add new room</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal-add-room") %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

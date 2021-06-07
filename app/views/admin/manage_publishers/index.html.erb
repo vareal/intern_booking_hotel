@@ -1,9 +1,9 @@
-<% provide(:page_title, "Manage Publishers") %>
+<% provide(:page_title, t(".manage-pub-title")) %>
 <% provide(:active_mp, "active") %>
 
 <div class="search-bar"> 
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  + Add New
+  + <%= t(".btn-add-pub") %>
   </button>
 
   <form class="d-flex">
@@ -15,10 +15,10 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Publisher</th>
-      <th scope="col">Image</th>
-      <th scope="col">Rooms Quatity</th>
-      <th scope="col">Options</th>
+      <th scope="col"><%= t(".publisher-col") %></th>
+      <th scope="col"><%= t(".image-col") %></th>
+      <th scope="col"><%= t(".room-quantity-col") %></th>
+      <th scope="col"><%= t(".options-col") %></th>
     </tr>
   </thead>
   <tbody>
@@ -86,7 +86,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add new room</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal-add-publisher") %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

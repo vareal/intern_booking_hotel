@@ -1,3 +1,0 @@
-module Publisher::RoomsHelper
-  
-end

@@ -10,6 +10,9 @@ class Publisher::RoomsController < Publisher::BaseController
     @room = Room.new(room_params)
     if @room.save
       redirect_to publisher_rooms_url
+    else
+      flash[:warn]="publish failed"
+      render :index
     end
   end
 

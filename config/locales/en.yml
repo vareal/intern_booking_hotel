@@ -36,6 +36,29 @@ en:
           p1: Intern Booking Hotel
           p2: Vareal Vietnam
           p3: Business Registration Certificate Number 0108308449
+    admin:
+      admin_application:
+        admin-page: Admin Page
+      layout:
+        header:
+          home-link: Home
+          profile-link: Profile
+          help-link: Help
+        sidebar:
+          dashboard-btn: Dashboard
+          manage-publisher: Manage Publisher
+          cities-btn: Cities
+    publisher:
+      publisher_application:
+        publisher-page: Publisher Page
+      layout:
+        header:
+          home-link: Home
+          profile-link: Profile
+          help-link: Help
+        sidebar:
+          dashboard-btn: Dashboard
+          room-btn: Rooms
   userpages:
     home:
       title: Welcome to Luxstay!
@@ -46,3 +69,40 @@ en:
         register: Register
         or: OR
         text: to enjoy!
+  admin:
+    cities:
+      index:
+        cities-title: List Cities
+        btn-add-new: Add New
+        search-input: Search
+        publisher-col: Publisher
+        city-col: City
+        image-col: Image
+        room-quantity-col: Room Quantity
+        options-col: Options
+        modal-add-room: Add new room
+        modal-add-publisher: Add new publisher
+    manage_publishers:
+      index:
+        manage-pub-title: Manage Publishers
+        btn-add-pub: Add New
+        search-input: Search
+        publisher-col: Publisher
+        image-col: Image
+        room-quantity-col: Room Quantity
+        options-col: Options
+        modal-add-publisher: Add new publisher
+  publisher:
+    rooms:
+      index:
+        rooms-title: List Rooms
+        btn-add-new: Add New
+        name-col: Name
+        image-col: Image
+        price-col: Price
+        status-col: Status
+        options-col: Options
+        des: Status
+        Openning: Openning
+        Ussing: Ussing
+        Pendding: Pendding

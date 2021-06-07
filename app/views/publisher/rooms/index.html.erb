@@ -1,8 +1,8 @@
-<% provide :page_title, "List Rooms" %>
+<% provide :page_title, t(".rooms-title") %>
 
 <div class="search-bar"> 
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    + Add New
+    + <%= t(".btn-add-new") %>
   </button>
 
   <form class="d-flex">
@@ -14,11 +14,11 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Price</th>
-      <th scope="col">Status</th>
-      <th scope="col">Options</th>
+      <th scope="col"><%= t(".name-col") %></th>
+      <th scope="col"><%= t(".image-col") %></th>
+      <th scope="col"><%= t(".price-col") %></th>
+      <th scope="col"><%= t(".status-col") %></th>
+      <th scope="col"><%= t(".options-col") %></th>
     </tr>
   </thead>
   <tbody>
@@ -38,19 +38,8 @@
         </td>
 
         <td>
-          <% if(room.status==1) %>
-            <span class="badge rounded-pill bg-success">
-              Openning
-            </span>
-          <% elsif(room.status==2) %>
-            <span class="badge rounded-pill bg-warning">
-              Pendding
-            </span>
-          <% elsif(room.status==3)%>
-            <span class="badge rounded-pill bg-danger">
-              Ussing
-            </span>
-          <% end %>
+              <%= get_status room.status %>
+            
         </td>
         <td>
           <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
@@ -72,15 +61,15 @@
           <%= image_tag(room.images.first.link, size: "520x440") %>
           
           <h5>Giá: <%= room.price %>vnđ</h5>
-          <p>Trạng thái: 
+          <p><%= t(".status-col") %>: 
             <% if room.status == 1 %>
-              Còn phòng
+              <%= t(".Openning") %>
             <% else %>
-              Hết phòng
+              <%= t(".Ussing") %>
             <% end %>
           </p>
           <p>
-            Mô tả : <br>
+            <%= t(".des") %> : <br>
             <p><%= room.description %></p>
           </p>
           </div>

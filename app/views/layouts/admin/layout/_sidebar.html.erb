@@ -19,7 +19,7 @@
           <%= link_to publisher_publisher_pages_path, class: active_for_sidebar(yield(:className)) do %>
             <i class="me-3 far fa-clock fa-fw"></i>
             <p>
-              Dashboard
+              <%= t(".dashboard-btn") %>
             </p>
           <% end %>
         </li>
@@ -27,7 +27,7 @@
           <%= link_to admin_manage_publishers_path, class: active_for_sidebar(yield(:active_mp)) do %>
             <i class="fas fa-user-alt"></i>
             <p>
-              Manage Publisher
+              <%= t(".manage-publisher") %>
             </p>
           <% end %>
         </li>
@@ -35,7 +35,7 @@
           <%= link_to admin_cities_path, class: active_for_sidebar(yield(:active_city)) do %>
             <i class="fas fa-city"></i>
             <p>
-              Cities
+              <%= t(".cities-btn") %>
             </p>
           <% end %>
         </li>
