@@ -15,19 +15,27 @@
         data-widget="treeview" role="menu">
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-          <%= link_to publisher_publisher_pages_path, class: "nav-link" do %>
+        <li class="nav-item">
+          <%= link_to publisher_publisher_pages_path, class: active_for_sidebar(yield(:className)) do %>
             <i class="me-3 far fa-clock fa-fw"></i>
             <p>
-              Partner Pages
+              Dashboard
             </p>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to publisher_rooms_path, class: "nav-link active" do %>
-            <i class="fas fa-laptop-house"></i>
+          <%= link_to admin_manage_publishers_path, class: active_for_sidebar(yield(:active_mp)) do %>
+            <i class="fas fa-user-alt"></i>
             <p>
-              Rooms
+              Manage Publisher
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_cities_path, class: active_for_sidebar(yield(:active_city)) do %>
+            <i class="fas fa-city"></i>
+            <p>
+              Cities
             </p>
           <% end %>
         </li>

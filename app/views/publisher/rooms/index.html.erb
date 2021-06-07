@@ -1,0 +1,122 @@
+<% provide :page_title, "List Rooms" %>
+
+<div class="search-bar"> 
+  <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    + Add New
+  </button>
+
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
+<table class="table list-rooms">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <th scope="row"><%= room.id %></th>
+        <td class="modal_click" data-bs-toggle="modal" data-bs-target=<%= "#room_info_modal"+room.id.to_s %>>
+          <%= room.name %>
+        </td>
+
+        <td>
+          <%= image_tag(room.images.first.link, size: "52x52") %>
+        </td>
+
+        <td>
+          <%= room.price %>đ
+        </td>
+
+        <td>
+          <% if(room.status==1) %>
+            <span class="badge rounded-pill bg-success">
+              Openning
+            </span>
+          <% elsif(room.status==2) %>
+            <span class="badge rounded-pill bg-warning">
+              Pendding
+            </span>
+          <% elsif(room.status==3)%>
+            <span class="badge rounded-pill bg-danger">
+              Ussing
+            </span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+
+      <div class="modal fade" id=<%= "room_info_modal"+room.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+          <h4>
+            <%= room.name %>
+          </h4>
+          <%= image_tag(room.images.first.link, size: "520x440") %>
+          
+          <h5>Giá: <%= room.price %>vnđ</h5>
+          <p>Trạng thái: 
+            <% if room.status == 1 %>
+              Còn phòng
+            <% else %>
+              Hết phòng
+            <% end %>
+          </p>
+          <p>
+            Mô tả : <br>
+            <p><%= room.description %></p>
+          </p>
+          </div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @rooms, theme: "twitter-bootstrap-4" %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new room</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_for @room, url: {action: :create, controller: "publisher/rooms"} do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
+          <%= f.label :price %>
+          <%= f.text_field :price, class: "form-control", autocomplete: "off" %>
+          <%= f.label :description %>
+          <%= f.text_field :description, class: "form-control", autocomplete: "off" %>
+          <%= f.fields_for(:images) do |imgs| %>
+            <%= imgs.label :link %>
+            <%= imgs.text_field :link, class: "form-control", autocomplete: "off" %>
+          <% end %>
+          <br>
+          <%= f.submit "Publish", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

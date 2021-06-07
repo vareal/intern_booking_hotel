@@ -31,9 +31,9 @@
         <p class="mb-6"><%= t ".title-child" %></p>
         <% unless  user_signed_in? %>
           <p>
-            <%= link_to t ".unless-signin.login" , new_user_session_path %>
+            <%= link_to t(".unless-signin.login") , new_user_session_path %>
             <p class="text-lowercase"><%= t ".or" %></p>
-            <%= link_to t ".unless-signin.register",
+            <%= link_to t(".unless-signin.register"),
               new_user_registration_path %>
             <%= t ".unless-signin.text" %>
           </p>
