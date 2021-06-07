@@ -41,6 +41,7 @@ en:
         admin-page: Admin Page
       layout:
         header:
+          Search: Search
           home-link: Home
           profile-link: Profile
           help-link: Help
@@ -53,6 +54,7 @@ en:
         publisher-page: Publisher Page
       layout:
         header:
+          Search: Search
           home-link: Home
           profile-link: Profile
           help-link: Help

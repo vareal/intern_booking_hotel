@@ -25,8 +25,4 @@ module Publisher::BaseHelper
       t(".#{sts}")
     end
   end
-  
-  def badges_status
-
-  end
 end

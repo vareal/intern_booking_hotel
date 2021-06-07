@@ -3,16 +3,16 @@ Rails.application.routes.draw do
     sign_in: "login", sign_out: "logout", registration: "register" }
 
   scope "(:locale)", locale: /en|vi/ do
-    root "userpages#home"
-  end
+    root "userpages#home"  
 
-  namespace :publisher do
-    get "publisher_pages", to: "publisherpages#home"
-    resources :rooms
-  end
-
-  namespace :admin do
-    resources :cities
-    resources :manage_publishers
+    namespace :publisher do
+      get "publisher_pages", to: "publisherpages#home"
+      resources :rooms
+    end
+    
+    namespace :admin do
+      resources :cities
+      resources :manage_publishers
+    end
   end
 end
