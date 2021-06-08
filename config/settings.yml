@@ -14,4 +14,9 @@ paginate: 4
 room_model:
   name_max: 80
   des_max: 250
-  
+valid:
+  city:
+    name:
+      length: 100
+homepage:
+  get_city: 5

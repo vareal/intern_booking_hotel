@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <SuggestHotel/>
   </div>
 </template>
 
 <script>
+  import SuggestHotel from './components/SuggestHotel.vue'
+
   export default {
-    data: function () {
-      return {
-        message: "Hello Vue!"
-      }
+    components: {
+      SuggestHotel
     }
   }
 </script>
