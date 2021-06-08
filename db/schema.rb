@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_045152) do
+ActiveRecord::Schema.define(version: 2021_06_08_080714) do
+
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "avatar"
+    t.string "name"
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "link"
@@ -27,6 +33,8 @@ ActiveRecord::Schema.define(version: 2021_06_07_045152) do
     t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_id"
+    t.integer "city_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|

@@ -11,7 +11,7 @@ class Publisher::RoomsController < Publisher::BaseController
     if @room.save
       redirect_to publisher_rooms_url
     else
-      flash[:warn]="publish failed"
+      flash[:warning]="publish failed"
       render :index
     end
   end

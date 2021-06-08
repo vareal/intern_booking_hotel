@@ -22,64 +22,47 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Hà Nội</td>
-      <td><%= image_tag("https://cdn.luxstay.com/home/location/location_1_1559734709.png", size: "52x52") %></td>
-      <td>866</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Hồ Chí Minh</td>
-      <td><%= image_tag("https://cdn.luxstay.com/home/location/location_5_1559735011.png", size: "52x52") %></td>
-      <td>688</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Đà Nẵng</td>
-      <td><%= image_tag("https://cdn.luxstay.com/home/location/location_16_1559303173.png", size: "52x52") %></td>
-      <td>561</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Nha Trang</td>
-      <td><%= image_tag("https://cdn.luxstay.com/home/location/location_1_1559373089.png", size: "52x52") %></td>
-      <td>356</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
+    <% @cities.each do |city| %>
+      <tr>
+        <th scope="row"><%= city.id %></th>
+        <td><%= city.name %></td>
+        <td><%= image_tag(city.avatar, size: "52x52") %></td>
+        <td><%= city.rooms.count %></td>
+        <td>
+          <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+city.id.to_s %>>
+            <i class="far fa-edit"></i>
+          </button>
+          <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+      <div class="modal fade" id=<%= "edit"+city.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal-add-room") %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= form_for city, url: {action: :update, controller: "admin/cities"} do |f| %>
+                <%= f.label :city %>
+                <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
+                <%= f.label :avatar %>
+                <%= f.text_field :avatar, class: "form-control", autocomplete: "off" %>
+                <%= f.hidden_field :id, value: city.id, class: "form-control", autocomplete: "off" %>
+                <br>
+                <%= f.submit "Add city", class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </tbody>
 </table>
+
+<%= paginate @cities, theme: "twitter-bootstrap-4" %>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,13 +73,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= form_for :addroom do |f| %>
+        <%= form_for @city, url: {action: :create, controller: "admin/cities"} do |f| %>
           <%= f.label :city %>
-          <%= f.text_field :city, class: "form-control", autocomplete: "off" %>
-          <%= f.label :describe %>
-          <%= f.text_field :describe, class: "form-control", autocomplete: "off" %>
-          <%= f.label :image %>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
+          <%= f.label :avatar %>
+          <%= f.text_field :avatar, class: "form-control", autocomplete: "off" %>
           <br>
           <%= f.submit "Add city", class: "btn btn-success" %>
         <% end %>
