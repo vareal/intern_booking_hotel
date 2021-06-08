@@ -10,3 +10,9 @@ banner:
   image_1: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/PEolFdE3k1ptD46IuWloWvph.jpg"
   image_2: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/H8cBLcwZmm0cYe5GnvSKCHCI.jpg"
   image_3: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/qF7ukmI--Rwr2H5LwzVZwcXa.jpg"
+valid:
+  city:
+    name:
+      length: 100
+homepage:
+  get_city: 5

@@ -1,0 +1,36 @@
+.featured-properties {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  text-align: center;
+  .tilte-suggest {
+    margin-bottom: 24px;
+  }
+  .city-famous {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 0px;
+    -webkit-box-pack: center;
+    .city_item {
+      -webkit-box-align: center;
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      list-style-type: none;
+      padding: 8px;
+      width: auto;
+      border-bottom: 1px solid rgb(221, 223, 226);
+      margin-bottom: -2px;
+      .size-padding {
+        padding-right: 12px;
+        padding-left: 12px;
+        -webkit-box-pack: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+    }
+    .active {
+      border-bottom: 2px solid rgb(83, 146, 249);
+    }
+  }
+}
