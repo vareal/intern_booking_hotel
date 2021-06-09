@@ -1,6 +1,10 @@
 <% provide :page_title, t(".cities-title") %>
 <% provide(:active_city, "active") %>
 
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
 <div class="search-bar"> 
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + <%= t(".btn-add-new") %>
