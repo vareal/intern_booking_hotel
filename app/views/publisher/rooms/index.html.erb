@@ -1,5 +1,9 @@
 <% provide :page_title, t(".rooms-title") %>
 
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
 <div class="search-bar"> 
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
     + <%= t(".btn-add-new") %>
@@ -98,6 +102,8 @@
           <%= f.text_field :price, class: "form-control", autocomplete: "off" %>
           <%= f.label :description %>
           <%= f.text_field :description, class: "form-control", autocomplete: "off" %>
+          <%= f.label :select_city %>
+          <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select a City"}, {class:"form-select"} %>
           <%= f.fields_for(:images) do |imgs| %>
             <%= imgs.label :link %>
             <%= imgs.text_field :link, class: "form-control", autocomplete: "off" %>

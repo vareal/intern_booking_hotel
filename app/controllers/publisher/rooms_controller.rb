@@ -11,14 +11,15 @@ class Publisher::RoomsController < Publisher::BaseController
     if @room.save
       redirect_to publisher_rooms_url
     else
-      flash[:warn]="publish failed"
-      render :index
+      debugger
+      flash[:danger]="publish failed"
+      redirect_to publisher_rooms_url
     end
   end
 
   private
     def room_params
-      params.require(:room).permit(:name ,:price ,:description, 
-        images_attributes: [:link])
+      params.require(:room).permit(:name, :price, :description, 
+        :city_id, images_attributes: [:link])
     end
 end
