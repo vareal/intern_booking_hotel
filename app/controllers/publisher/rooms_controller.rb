@@ -12,7 +12,6 @@ class Publisher::RoomsController < Publisher::BaseController
       flash[:success]= t ".publish-success"
       redirect_to publisher_rooms_url
     else
-      debugger
       flash[:danger]= t ".publish-failed"
       redirect_to publisher_rooms_url
     end
