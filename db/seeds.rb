@@ -16,10 +16,12 @@ City.create(
 
 5.times do |n|
   name = "Room-#{n+1}"
-  city_id = 16 + n
-  Room.create(
+  fist_city = City.find_by(name: "Hồ Chí Minh")
+  city_id = fist_city.id + n
+  Room.create!(
     name: name,
     price: "300000",
+    description: "Phong dep",
     city_id: city_id
   )
 end
