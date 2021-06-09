@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
     
     namespace :admin do
+      patch "cities", to: "cities#update"
       resources :cities
       resources :manage_publishers
     end

@@ -5,24 +5,16 @@ module Publisher::BaseHelper
   end
 
   def get_status status
-    sts = case status
-      when 1
-        "Openning"
-      when 2
-        "Pendding"
-      when 3
-        "Ussing"
-      end
-    badges = case sts.to_sym
-      when :Ussing
+    badges = case status.to_sym
+      when :Using
         "danger"
       when :Openning
         "success"
-      when :Pendding
+      when :Pending
         "warning"
       end
     tag.span class: "badge rounded-pill bg-#{badges}" do
-      t(".#{sts}")
+      t(".#{status}")
     end
   end
 end
