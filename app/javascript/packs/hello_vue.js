@@ -7,6 +7,10 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
+import axios from 'axios'
+
+Vue.prototype.$axios = axios
+require('../assets/style/index.scss')
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

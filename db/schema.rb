@@ -10,14 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_080714) do
-
-  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "avatar"
-    t.string "name"
-    t.index ["name"], name: "index_cities_on_name", unique: true
-  end
-
+ActiveRecord::Schema.define(version: 2021_06_07_101546) do
+  
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "link"
     t.bigint "room_id", null: false
@@ -25,11 +19,18 @@ ActiveRecord::Schema.define(version: 2021_06_08_080714) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_images_on_room_id"
   end
+  
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "avatar"
+    t.string "name"
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
     t.string "description"
+    t.integer "price"
+    t.integer "city_id"
     t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
