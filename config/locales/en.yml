@@ -108,6 +108,9 @@ en:
         modal-add-publisher: Add new publisher
   publisher:
     rooms:
+      create:
+        publish-failed: Publish Failed
+        publish-success: Publish Success
       index:
         rooms-title: List Rooms
         btn-add-new: Add New
