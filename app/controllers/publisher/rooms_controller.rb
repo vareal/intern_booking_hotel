@@ -9,17 +9,18 @@ class Publisher::RoomsController < Publisher::BaseController
   def create
     @room = Room.new(room_params)
     if @room.save
-      flash[:sucess] = t ".publish-success"
+      flash[:success]= t ".publish-success"
       redirect_to publisher_rooms_url
     else
-      flash[:warning] = t ".publish-failed"
+      flash[:danger]= t ".publish-failed"
       redirect_to publisher_rooms_url
+
     end
   end
 
   private
     def room_params
-      params.require(:room).permit(:name ,:price ,:description, 
-        images_attributes: [:link])
+      params.require(:room).permit(:name, :price, :description, 
+        :city_id, images_attributes: [:link])
     end
 end

@@ -1,14 +1,11 @@
 <% provide(:page_title, t(".manage-pub-title")) %>
 <% provide(:active_mp, "active") %>
 
-<div class="search-bar"> 
-  <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  + <%= t(".btn-add-pub") %>
-  </button>
+<div class="search-bar">
 
   <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <input class="form-control me-2" type="search" placeholder=<%= t ".search-input" %> aria-label="Search">
+    <button class="btn btn-outline-success" type="submit"><%= t ".search-input" %></button>
   </form>
 </div>
 <table class="table list-rooms">
@@ -22,89 +19,18 @@
     </tr>
   </thead>
   <tbody>
+    <% @publishers.each do |publisher| %>
     <tr>
-      <th scope="row">1</th>
-      <td>Khách sạn Diego</td>
-      <td><%= image_tag("https://www.hayalanka.com/wp-content/uploads/2017/07/avtar-image.jpg", size: "52x52") %></td>
-      <td>16</td>
+      <th scope="row"><%= publisher.id %></th>
+      <td><%= publisher.first_name+" "+publisher.last_name %></td>
+      <td><%= image_tag(publisher.avatar, size: "52x52") %></td>
+      <td><%= publisher.rooms.count %></td>
       <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
         <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
           <i class="far fa-trash-alt"></i>
         <% end %>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>AlGalo Tây Hồ</td>
-      <td><%= image_tag("https://www.hayalanka.com/wp-content/uploads/2017/07/avtar-image.jpg", size: "52x52") %></td>
-      <td>11</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Cenhome</td>
-      <td><%= image_tag("https://www.hayalanka.com/wp-content/uploads/2017/07/avtar-image.jpg", size: "52x52") %></td>
-      <td>12</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Khách sạn Mê Linh</td>
-      <td><%= image_tag("https://www.hayalanka.com/wp-content/uploads/2017/07/avtar-image.jpg", size: "52x52") %></td>
-      <td>14</td>
-      <td>
-        <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal-add-publisher") %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= form_for :addroom do |f| %>
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, class: "form-control", autocomplete: "off" %>
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: "form-control", autocomplete: "off" %>
-          <%= f.label :email %>
-          <%= f.text_field :email, class: "form-control", autocomplete: "off" %>
-          <%= f.label :password %>
-          <%= f.password_field :password, class: "form-control" %>
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
-          <br>
-          <%= f.submit "Add Publisher", class: "btn btn-success" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>

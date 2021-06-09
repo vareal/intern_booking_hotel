@@ -3,7 +3,7 @@ en:
     sessions:
       new:
         account-title: Sign in
-        input-group-lable: Login for more experiences
+        input-group-label: Login for more experiences
         email-input: Email
         email-password: Password
         submit: Sign in
@@ -11,6 +11,18 @@ en:
         link-reset: Click here
         sigin-in: Don't have an account?
         link-sigin: Sign up
+    registrations:
+      new:
+        account-title: Sign up
+        email-input: Email
+        password-input: Password
+        password-confirm-input: Password Confirmation
+        submit: Sign up
+        had-acc: Have account?
+        link-login: Login
+        first-name-input: First Name
+        last-name-input: Last Name
+        phone-number-input: Phone Number
   layouts:
     devise:
       application:
@@ -101,8 +113,8 @@ en:
   publisher:
     rooms:
       create:
-        publish-failed: "Publish failed"
-        publish-sucess: "Publish success"
+        publish-failed: Publish Failed
+        publish-success: Publish Success
       index:
         rooms-title: List Rooms
         btn-add-new: Add New
