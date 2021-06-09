@@ -2,7 +2,7 @@
   <div>
     <div class="container featured-properties">
       <div class="tilte-suggest">
-        <h3>Featured homes recommended for you</h3>
+        <h3 class="title-content">Những chỗ nghỉ nổi bật khuyến nghị cho bạn:</h3>
       </div>
       <ul class="city-famous">
         <li
@@ -25,7 +25,7 @@
             v-for="(room, index) in rooms"
             :key= "index"
           >
-            {{room.name}}
+            {{ room.name }}
           </div>
         </div>
       </div>

@@ -85,6 +85,10 @@ en:
         text: to enjoy!
   admin:
     cities:
+      create:
+        add-city-failed: "Add city failed"
+      update:
+        city-not-exist: "City not exist"
       index:
         cities-title: List Cities
         btn-add-new: Add New
@@ -121,5 +125,5 @@ en:
         options-col: Options
         des: Status
         Openning: Openning
-        Ussing: Ussing
-        Pendding: Pendding
+        Using: Using
+        Pending: Pending

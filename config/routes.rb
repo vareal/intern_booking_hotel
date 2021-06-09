@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "user_page", to: "userpages#home"
       get "get_room_form_city", to: "cities#show"
+      get "current_user", to: "api#current_user_api"
+      get "user_login", to: "api#user_login"
     end
   end
 
@@ -18,8 +20,9 @@ Rails.application.routes.draw do
       get "publisher_pages", to: "publisherpages#home"
       resources :rooms
     end
-    
+
     namespace :admin do
+      patch "cities", to: "cities#update"
       resources :cities
       resources :manage_publishers
     end

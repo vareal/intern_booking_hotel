@@ -14,6 +14,7 @@ class Publisher::RoomsController < Publisher::BaseController
     else
       flash[:danger]= t ".publish-failed"
       redirect_to publisher_rooms_url
+
     end
   end
 
