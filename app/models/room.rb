@@ -7,5 +7,5 @@ class Room < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true, length: { maximum: Settings.room_model.des_max }
 
-  enum status: {Openning: 1, Pending: 2, Ussing: 3}
+  enum status: {Openning: 1, Pending: 2, Using: 3}
 end

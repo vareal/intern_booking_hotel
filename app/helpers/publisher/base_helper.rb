@@ -6,7 +6,7 @@ module Publisher::BaseHelper
 
   def get_status status
     badges = case status.to_sym
-      when :Ussing
+      when :Using
         "danger"
       when :Openning
         "success"
