@@ -10,6 +10,10 @@ banner:
   image_1: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/PEolFdE3k1ptD46IuWloWvph.jpg"
   image_2: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/H8cBLcwZmm0cYe5GnvSKCHCI.jpg"
   image_3: "https://beta-api.luxstay.net/api/upload/file?storage=admins/12/qF7ukmI--Rwr2H5LwzVZwcXa.jpg"
+paginate: 4
+room_model:
+  name_max: 80
+  des_max: 250
 valid:
   city:
     name:

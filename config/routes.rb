@@ -10,12 +10,18 @@ Rails.application.routes.draw do
   end
 
   scope "(:locale)", locale: /en|vi/ do
-    root "userpages#home"
+    root "userpages#home"  
 
     resources :rooms
     resources :cities
     namespace :publisher do
       get "publisher_pages", to: "publisherpages#home"
+      resources :rooms
+    end
+    
+    namespace :admin do
+      resources :cities
+      resources :manage_publishers
     end
   end
 end
