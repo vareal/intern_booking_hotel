@@ -1,0 +1,60 @@
+<h3 class="account__title"><%= t ".account-title" %></h3>
+
+<%= form_for resource, as: resource_name,
+  url: registration_path(resource_name), class: "account__body" do |f| %>
+  <div class="input-group">
+    <%= f.email_field :email, autofocus: true,
+      class: "input fix-borderRadius form-control", autocomplete: "email",
+      placeholder: t(".email-input") %>
+    <span class="input-group-text">
+      <i class="far fa-envelope"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :first_name, autofocus: true,
+      class: "input fix-borderRadius form-control", autocomplete: "first_name",
+      placeholder: t(".first-name-input") %>
+    <span class="input-group-text">
+      <i class="fas fa-signature"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :last_name, autofocus: true,
+      class: "input fix-borderRadius form-control", autocomplete: "last_name",
+      placeholder: t(".last-name-input") %>
+    <span class="input-group-text">
+      <i class="fas fa-signature"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :phone_number, autofocus: true,
+      class: "input fix-borderRadius form-control", autocomplete: "phone_number",
+      placeholder: t(".phone-number-input") %>
+    <span class="input-group-text">
+      <i class="fas fa-phone"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.password_field :password, class: "input fix-borderRadius
+      form-control", autocomplete: "current-password",
+      placeholder: t(".password-input") %>
+    <span class="input-group-text">
+      <i class="fas fa-lock"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.password_field :password_confirmation, class: "input fix-borderRadius
+      form-control", autocomplete: "current-password",
+      placeholder: t(".password-confirm-input") %>
+    <span class="input-group-text">
+      <i class="fas fa-lock"></i>
+    </span>
+  </div>
+  <%= f.submit t(".submit"), class: "btn btn-login fix-borderRadius" %>
+  <div class="center-xs">
+    <div>
+      <%= t ".had-acc" %> <%= link_to t(".link-login"), "#",
+        class: "color-i" %>
+    </div>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   scope "(:locale)", locale: /en|vi/ do
-    root "userpages#home"  
+    root "userpages#home"
 
     resources :rooms
     resources :cities
