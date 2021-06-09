@@ -9,10 +9,11 @@ class Publisher::RoomsController < Publisher::BaseController
   def create
     @room = Room.new(room_params)
     if @room.save
+      flash[:sucess] = t ".publish-success"
       redirect_to publisher_rooms_url
     else
-      flash[:warning]="publish failed"
-      render :index
+      flash[:warning] = t ".publish-failed"
+      redirect_to publisher_rooms_url
     end
   end
 

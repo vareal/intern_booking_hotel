@@ -1,5 +1,6 @@
 class Admin::CitiesController < Admin::BaseController
   before_action :get_city, only: :update
+  
   def index
     @city = City.new
     @cities = City.all.page(params[:page]).per Settings.paginate
@@ -10,7 +11,7 @@ class Admin::CitiesController < Admin::BaseController
     if @city.save
       redirect_to admin_cities_url
     else
-      flash[:warning] = "Add city failed"
+      flash[:warning] = t ".add-city-failed"
       redirect_to admin_cities_url
     end
   end
@@ -27,10 +28,11 @@ class Admin::CitiesController < Admin::BaseController
     end
 
     def get_city
-      @city = City.find_by(id: params.require(:city).permit(:id)[:id])
+      @city = City.find_by(id: params[:city][:id])
       return if @city
-      flash[:danger] = "City not exist"
-      redirect_to admin_cities_url
+
+        flash[:danger] = t ".city-not-exist"
+        redirect_to admin_cities_url
 
     end
 end
