@@ -20,7 +20,7 @@ class Publisher::RoomsController < Publisher::BaseController
 
   private
     def room_params
-      params.require(:room).permit(:name, :price, :description, 
+      params.require(:room).permit(:name, :price, :description,
         :city_id, images_attributes: [:link])
     end
 end

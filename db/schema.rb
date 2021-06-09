@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_030254) do
+ActiveRecord::Schema.define(version: 2021_06_11_042651) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "avatar"
@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 2021_06_09_030254) do
     t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "room_id"
     t.integer "city_id"
     t.integer "user_id"
+    t.integer "capacity_adult_person"
+    t.integer "capacity_child_person"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
