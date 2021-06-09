@@ -8,12 +8,23 @@
 import Vue from 'vue'
 import App from '../app.vue'
 import axios from 'axios'
+import VueRouter from 'vue-router'
+import { routes } from './routes'
+
+Vue.use(VueRouter);
 
 Vue.prototype.$axios = axios
 require('../assets/style/index.scss')
+require('../assets/style/main.scss')
+
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    router,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
