@@ -25,7 +25,9 @@
             v-for="(room, index) in rooms"
             :key= "index"
           >
-            {{ room.name }}
+            <router-link :to="{ name: 'RoomDetail', params: { id: room.id }}">
+              {{room.name}}
+            </router-link>
           </div>
         </div>
       </div>
