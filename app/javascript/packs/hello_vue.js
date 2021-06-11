@@ -18,7 +18,6 @@ require('../assets/style/index.scss')
 require('../assets/style/main.scss')
 
 const router = new VueRouter({
-  mode: 'history',
   routes
 })
 

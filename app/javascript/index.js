@@ -7,11 +7,8 @@ document.addEventListener("turbolinks:load", function() {
       dots: true
     });
 
-    $('.gallery').slick({
-      autoplay: true,
-      autoplaySpeed: 2000,
+    $('.list-images-for-room').slick({
       arrows: true,
-      dots: true
     });
   });
 })

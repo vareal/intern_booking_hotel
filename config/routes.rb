@@ -8,13 +8,12 @@ Rails.application.routes.draw do
       get "get_room_form_city", to: "cities#show"
       get "current_user", to: "api#current_user_api"
       get "user_login", to: "api#user_login"
+      get "rooms/:id", to: "rooms#show"
     end
   end
 
   scope "(:locale)", locale: /en|vi/ do
     root "userpages#home"
-
-    resources :rooms
     resources :cities
     namespace :publisher do
       get "publisher_pages", to: "publisherpages#home"
@@ -22,7 +21,6 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      patch "cities", to: "cities#update"
       resources :cities
       resources :manage_publishers
     end
