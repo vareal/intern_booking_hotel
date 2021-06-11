@@ -16,14 +16,12 @@
         color: #777;
         text-decoration: underline;
       }
-
       .breadcrumb-connector {
         color: #000;
         font-size: 13px;
       }
     }
   }
-
   .main-content {
     margin-top: 16px;
     width: 100%;
@@ -135,6 +133,95 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+.SearchBoxContainer {
+  position: relative;
+  .Searchbox {
+    background: #20274d;
+    height: 70px;
+    padding: 10px;
+    .Searchbox__wrapper {
+      width: 600px;
+      display: flex;
+      margin: 0 auto;
+    }
+    .vhd__datepicker__wrapper {
+      border-radius: 5px;
+      .vhd__datepicker__dummy-wrapper {
+        border-radius: 5px;
+      }
+
+      .vhd__datepicker {
+        margin-top: 12px;
+      }
+    }
+
+    .total-person {
+      margin-left: 5px;
+      .picker-person {
+        width: 11em;
+        background: #fff;
+        height: 48px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 12px;
+        cursor: pointer;
+      }
+    }
+
+    .submit-button {
+      margin-left: 5px;
+      .button-agoda {
+        background-color: #5392f9;
+        padding: 11px;
+        color: #fff;
+        width: 8em;
+      }
+    }
+
+    .choose-person {
+      width: 310px;
+      transform-origin: center top;
+      position: absolute;
+      background: #fff;
+      margin-top: 9px;
+      border-radius: 5px;
+      height: auto;
+      z-index: 1;
+      padding: 10px;
+      .select-number {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 4px;
+      }
+
+      .el-input-number {
+        line-height: 38px;
+        width: 140px;
+        .el-input-number__decrease {
+          border-radius: 50%;
+          border: 1px solid #ced4da;
+          width: 40px;
+        }
+      }
+
+      .el-input__inner {
+        padding-left: 50px;
+        padding-right: 50px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .input-person {
+        width: 26%;
       }
     }
   }

@@ -1,5 +1,6 @@
 <template lang="">
   <div>
+    <StickyHeader/>
     <div class="container-custom container">
       <ul class="BreadCrumb-hotel">
         <li class="BreadCrumb-hotel_item">
@@ -139,29 +140,34 @@
   </div>
 </template>
 <script>
-  export default {
-    data: function(){
-      return {
-        room: {},
-        param: ''
-      }
-    },
-    mounted(){
-      this.param = '/v1/rooms/' + this.$route.params.id
-      this.$axios.get(this.param)
-      .then(response => {
-        this.room = response.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    },
-    computed: {
-      format_price(){
-        return Intl.NumberFormat('vi-VN',
-          { style: 'currency', currency: 'VND' }
-        ).format(this.room.price);
-      }
+import StickyHeader from '../layouts/StickyHeader.vue'
+
+export default {
+  data: function(){
+    return {
+      room: {},
+      param: ''
     }
-  }
+  },
+  mounted(){
+    this.param = '/v1/rooms/' + this.$route.params.id
+    this.$axios.get(this.param)
+    .then(response => {
+      this.room = response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  },
+  computed: {
+    format_price(){
+      return Intl.NumberFormat('vi-VN',
+        { style: 'currency', currency: 'VND' }
+      ).format(this.room.price);
+    }
+  },
+  components: {
+    StickyHeader
+  },
+}
 </script>
