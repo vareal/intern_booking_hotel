@@ -26,7 +26,7 @@
                     <a class="button login font-size-button" href="/auth/login">
                       <span>Đăng nhập</span>
                     </a>
-                    <a class="button sign-up font-size-button">
+                    <a class="button sign-up font-size-button" href="/auth/register/sign_up">
                       <span> Tạo tài khoản </span>
                     </a>
                   </template>

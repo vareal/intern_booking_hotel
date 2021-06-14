@@ -6,7 +6,6 @@ document.addEventListener("turbolinks:load", function() {
       arrows: false,
       dots: true
     });
-
     $('.gallery').slick({
       autoplay: true,
       autoplaySpeed: 2000,

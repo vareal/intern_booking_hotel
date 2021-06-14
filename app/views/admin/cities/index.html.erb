@@ -5,7 +5,7 @@
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
 
-<div class="search-bar"> 
+<div class="search-bar">
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + <%= t(".btn-add-new") %>
   </button>
@@ -30,13 +30,13 @@
       <tr>
         <th scope="row"><%= city.id %></th>
         <td><%= city.name %></td>
-        <td><%= image_tag(city.avatar, size: "52x52") %></td>
+        <td><%= image_tag(city.image, size: "52x52") %></td>
         <td><%= city.rooms.count %></td>
         <td>
           <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+city.id.to_s %>>
             <i class="far fa-edit"></i>
           </button>
-          <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
+          <%= link_to "/admin/cities/#{city.id}", remote: true, method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger city-item" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>
@@ -52,8 +52,8 @@
               <%= form_for city, url: {action: :update, controller: "admin/cities"} do |f| %>
                 <%= f.label :city %>
                 <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
-                <%= f.label :avatar %>
-                <%= f.text_field :avatar, class: "form-control", autocomplete: "off" %>
+                <%= f.label :image %>
+                <%= f.file_field :image, class: "form-control", autocomplete: "off" %>
                 <%= f.hidden_field :id, value: city.id, class: "form-control", autocomplete: "off" %>
                 <br>
                 <%= f.submit "Add city", class: "btn btn-success" %>
@@ -80,8 +80,8 @@
         <%= form_for @city, url: {action: :create, controller: "admin/cities"} do |f| %>
           <%= f.label :city %>
           <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
-          <%= f.label :avatar %>
-          <%= f.text_field :avatar, class: "form-control", autocomplete: "off" %>
+          <%= f.label :image %>
+          <%= f.file_field :image, class: "form-control", autocomplete: "off" %>
           <br>
           <%= f.submit "Add city", class: "btn btn-success" %>
         <% end %>
