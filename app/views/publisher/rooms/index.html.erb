@@ -49,7 +49,7 @@
           <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+room.id.to_s %>>
             <i class="far fa-edit"></i>
           </button>
-          <%= link_to "/publisher/rooms/#{room.id}",remote: true , method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger room-item" do %>
+          <%= link_to publisher_room_path(id: room),remote: true , method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger room-item" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>

@@ -46,7 +46,6 @@ class Admin::CitiesController < Admin::BaseController
 
         flash[:danger] = t ".city-not-exist"
         redirect_to admin_cities_url
-
     end
 
     def get_city
@@ -55,6 +54,5 @@ class Admin::CitiesController < Admin::BaseController
 
         flash[:danger] = t ".city-not-exist"
         redirect_to admin_cities_url
-
     end
 end
