@@ -33,6 +33,8 @@ User.create!(
     price: "300000",
     description: "Phong dep",
     city_id: city_id,
-    user_id: user_id.id
+    user_id: user_id.id,
+    capacity_adult_person: 10,
+    capacity_child_person: 4
   )
 end

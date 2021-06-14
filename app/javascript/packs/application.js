@@ -18,6 +18,8 @@ import "@fortawesome/fontawesome-free/js/all";
 var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 
+window.moment = require('moment');
+
 require("slick-carousel")
 
 document.addEventListener("turbolinks:load", () => {

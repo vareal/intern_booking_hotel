@@ -50,6 +50,7 @@
         this.ajax_getRoom_Fromcity(id)
       },
       select_city(event, index) {
+        debugger
         this.sellected = index
       },
       active_city(index) {

@@ -1,12 +1,24 @@
 <template lang="">
   <div>
-    <StickyHeader/>
+    <StickyHeader v-bind:room="room"/>
     <div class="container-custom container">
       <ul class="BreadCrumb-hotel">
         <li class="BreadCrumb-hotel_item">
           <div>
             <router-link to="/" class="breadcrumb-link">
               <div class="breadcrumb-regionName">Trang chủ</div>
+            </router-link>
+          </div>
+        </li>
+        <li class="BreadCrumb-hotel_item">
+          <div class="breadcrumb-connector"> > </div>
+        </li>
+        <li class="BreadCrumb-hotel_item">
+          <div>
+            <router-link to="/" class="breadcrumb-link"
+              v-for="city in room"
+            >
+              <div class="breadcrumb-regionName"> {{ city.name }}</div>
             </router-link>
           </div>
         </li>
@@ -125,10 +137,26 @@
                   <div class="room-sidebar__pricing">
                     <p class="fadeIn">
                       <span class="extra-bold">
-                        {{ format_price }}
+                        {{ total_price | format_price}}
                       </span>
-                      <span class="p--small">/ 1 đêm</span>
+                      <span class="p--small">/{{quatityday}}đêm</span>
                     </p>
+                  </div>
+                  <div class="picker-date">
+                    <div class="pick-time time-check-in">
+                      <input type="date" class="form-control check-in"
+                        v-model="check_in"
+                      >
+                    </div>
+                    <p>
+                      đến
+                    </p>
+                    <div class="pick-time time-check-out">
+                      <input type="date" class="form-control check-out"
+                        v-model="check_out"
+                        @change="quatity_day()"
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,12 +174,15 @@ export default {
   data: function(){
     return {
       room: {},
-      param: ''
+      check_in: '',
+      check_out: '',
+      quatityday: 1,
+      totalPrice: ''
     }
   },
   mounted(){
-    this.param = '/v1/rooms/' + this.$route.params.id
-    this.$axios.get(this.param)
+    let param = '/v1/rooms/' + this.$route.params.id
+    this.$axios.get(param)
     .then(response => {
       this.room = response.data;
     })
@@ -159,11 +190,26 @@ export default {
       console.log(error);
     });
   },
+  methods: {
+    quatity_day(){
+      var a = new Date(this.check_in)
+      var b = new Date(this.check_out)
+      var difference = Math.abs(a - b);
+      this.quatityday = difference/(1000 * 3600 * 24)
+    },
+  },
+
+  filters: {
+    format_price: function(price){
+      return price.toLocaleString(
+        'vi', {style : 'currency', currency : 'VND'}
+      );
+    }
+  },
+
   computed: {
-    format_price(){
-      return Intl.NumberFormat('vi-VN',
-        { style: 'currency', currency: 'VND' }
-      ).format(this.room.price);
+    total_price(){
+      return this.totalPrice = this.quatityday * this.room.price
     }
   },
   components: {

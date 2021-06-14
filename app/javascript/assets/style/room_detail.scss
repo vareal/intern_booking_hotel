@@ -132,6 +132,24 @@
               }
             }
           }
+
+          .picker-date {
+            text-align: center;
+            margin-top: 3px;
+            display: flex;
+            border: 1px solid rgb(211, 211, 211);
+            border-radius: 5px ;
+            p {
+              padding: 7px;
+            }
+
+            .pick-time {
+              width: 42.5%;
+              input {
+                border: none;
+              }
+            }
+          }
         }
       }
     }
@@ -145,12 +163,13 @@
     height: 70px;
     padding: 10px;
     .Searchbox__wrapper {
-      width: 600px;
+      width: 1046px;
       display: flex;
       margin: 0 auto;
     }
     .vhd__datepicker__wrapper {
       border-radius: 5px;
+      width: 32%;
       .vhd__datepicker__dummy-wrapper {
         border-radius: 5px;
       }
@@ -198,30 +217,100 @@
         align-items: center;
         justify-content: space-between;
         margin-top: 4px;
-      }
+        .select-number__title {
+          flex: 0 0 100px;
+          p {
+            margin-bottom: 0;
+          }
+        }
+        .el-input-number {
+          line-height: 38px;
+          width: 140px;
+          display: flex;
+          .el-input-number__decrease {
+            border-radius: 50%;
+            border: 1px solid #ced4da;
+            width: 40px;
+            text-align: center;
+            cursor: pointer;
+          }
 
-      .el-input-number {
-        line-height: 38px;
-        width: 140px;
-        .el-input-number__decrease {
-          border-radius: 50%;
-          border: 1px solid #ced4da;
-          width: 40px;
+          .el-input-number__increase {
+            border-radius: 50%;
+            border: 1px solid #ced4da;
+            width: 40px;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          .el-input {
+            position: relative;
+            font-size: 16px;
+            width: 26px;
+            margin: 0 auto;
+            input {
+              border-radius: 0;
+              border: none;
+              box-shadow: none;
+              margin: 0px 6px;
+            }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+            }
+            input[type=number] {
+              -moz-appearance: textfield;
+            }
+            input:focus{
+              outline: none;
+            }
+          }
+
+          .is-disabled {
+            opacity: .4;
+            color: #555;
+            cursor: not-allowed;
+          }
         }
       }
+    }
 
-      .el-input__inner {
-        padding-left: 50px;
-        padding-right: 50px;
-        height: 40px;
-        line-height: 40px;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-      }
+    .IconBox--autocomplete {
+      height: 48px;
+      padding: 10px;
+      width: 28em;
+      background-color: #fff;
+      margin-right: 5px;
+      border-radius: 5px;
+      .IconBox__wrapper {
+        display: flex;
+        svg {
+          margin: 5px 1px;
+          margin-right: 10px;
+        }
+        .IconBox__child {
+          width: 100%;
+          input {
+            width: 100%;
+            line-height: 1.25;
+            font-weight: 400;
+            padding: 0;
+            margin: 0;
+            border: none;
+            text-overflow: ellipsis;
+          }
 
-      .input-person {
-        width: 26%;
+          input[type=number]::-webkit-inner-spin-button,
+          input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+          }
+          input[type=number] {
+            -moz-appearance: textfield;
+          }
+          input:focus{
+            outline: none;
+          }
+        }
       }
     }
   }

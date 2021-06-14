@@ -10,6 +10,8 @@ import App from '../app.vue'
 import axios from 'axios'
 import VueRouter from 'vue-router'
 import { routes } from './routes'
+import store from '../store/index'
+import moment from 'moment'
 
 Vue.use(VueRouter);
 
@@ -24,6 +26,7 @@ const router = new VueRouter({
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     router,
+    store,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
