@@ -43,16 +43,14 @@ class Admin::CitiesController < Admin::BaseController
     def find_city
       @city = City.find_by(id: params[:id])
       return if @city
-
-        flash[:danger] = t ".city-not-exist"
-        redirect_to admin_cities_url
+      flash[:danger] = t ".city-not-exist"
+      redirect_to admin_cities_url
     end
 
     def get_city
       @city = City.find_by(id: params[:city][:id])
       return if @city
-
-        flash[:danger] = t ".city-not-exist"
-        redirect_to admin_cities_url
+      flash[:danger] = t ".city-not-exist"
+      redirect_to admin_cities_url
     end
 end

@@ -31,10 +31,8 @@ class Publisher::RoomsController < Publisher::BaseController
     def find_room
       @room = Room.find_by(id: params[:id])
       return if @room
-
-        flash[:danger] = t ".room-not-exist"
-        redirect_to publisher_rooms_url
-
+      flash[:danger] = t ".room-not-exist"
+      redirect_to publisher_rooms_url
     end
     
     def room_params
