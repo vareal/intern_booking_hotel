@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope module: "api" do
     namespace :v1 do
       get "user_page", to: "userpages#home"
+      get "list_city", to: "userpages#list_city"
       get "get_room_form_city", to: "cities#show"
       get "current_user", to: "api#current_user_api"
       get "user_login", to: "api#user_login"
