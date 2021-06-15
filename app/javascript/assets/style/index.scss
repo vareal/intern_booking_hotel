@@ -441,3 +441,126 @@ a.navbar-link::after {
     color: #fff;
   }
 }
+
+.booking-room {
+  background: #f4f4f4;
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  .space--loose {
+    .input-wraper {
+      margin-bottom: 1rem;
+      .input-wraper__label {
+        position: relative;
+        .text-danger {
+          color: #f63949;
+        }
+      }
+
+      .px--18 {
+        padding: 12px 21px;
+        border-radius: 5px;
+      }
+
+      .is-shadow-box {
+        box-shadow: 1px 1px 1px 0 rgb(233, 231, 231);
+      }
+
+      .p--12 {
+        padding: 17px 23px;
+      }
+
+      .c-gray-9 {
+        color: #999;
+      }
+
+      .p--giant {
+        font-size: 25px;
+      }
+
+      .p--small-2 {
+        font-size: 12px;
+      }
+
+      .is-decorate {
+        position: relative;
+        height: 4px;
+        width: 8rem;
+      }
+
+      .is-green {
+        background: #5392f9;
+      }
+
+      .is-orange {
+        background: #f1ad46;
+      }
+    }
+  }
+
+  .nav-item {
+    span {
+      font-size: 14px !important;
+      font-weight: 300 !important;
+    }
+
+    .active {
+      color: #5392f9 !important;
+      font-weight: 800 !important;
+    }
+  }
+
+  .checkup--sticky {
+    background: #fff;
+    box-shadow: 1px 1px 1px 0 rgb(233, 231, 231);
+    border: none;
+    position: sticky;
+    top: 100px;
+  }
+
+  .checkup {
+    border-radius: 5px;
+    padding: 1.5rem;
+    font-size: .875rem;
+    .grow {
+      padding-right: 10%;
+      flex: 1;
+    }
+  }
+
+  .payment {
+    color: #fff;
+    background-color: rgb(83, 146, 249);
+  }
+
+  .checkup .checkup__detail, .checkup>div {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 1.475rem;
+  }
+
+  .middle-xs {
+    margin-bottom: 14px;
+    margin-top: 14px;
+    align-items: center;
+    span {
+      width: 184px;
+      img {
+        width: 20%;
+      }
+    }
+  }
+
+  .my--18 {
+    background-color: #757575;
+  }
+
+  .extra-bold {
+    font-weight: 900;
+  }
+
+  .content {
+    margin-left: .5rem;
+    line-height: 1.125rem;
+  }
+}

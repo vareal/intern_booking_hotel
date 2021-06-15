@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Header/>
+    <div class="layout-wraper" v-if="showLayout">
+      <Header/>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -10,6 +12,12 @@
   export default {
     components: {
       Header
+    },
+
+    computed: {
+      showLayout(){
+        return this.$store.state.showLayout
+      }
     },
   }
 </script>

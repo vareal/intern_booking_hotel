@@ -158,6 +158,22 @@
                       >
                     </div>
                   </div>
+                  <div class="submit-booking-room">
+                    <div class="needLogin" v-if="user_login">
+                      <router-link :to="{ name: 'BookingRoom', params: { id: room.id }}"
+                        class="button button-b"
+                      >
+                        Đặt ngay
+                      </router-link>
+                    </div>
+                    <div class="needLogin" v-else>
+                      <router-link to="/auth/login"
+                        class="button button-b"
+                      >
+                        Login to booking room
+                      </router-link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -169,6 +185,7 @@
 </template>
 <script>
 import StickyHeader from '../layouts/StickyHeader.vue'
+import {mapGetters} from 'vuex'
 
 export default {
   data: function(){
@@ -189,6 +206,14 @@ export default {
     .catch(error => {
       console.log(error);
     });
+
+    if (localStorage.check_in) {
+      this.check_in = localStorage.check_in;
+    }
+
+    if (localStorage.check_out) {
+      this.check_out = localStorage.check_out;
+    }
   },
   methods: {
     quatity_day(){
@@ -196,7 +221,18 @@ export default {
       var b = new Date(this.check_out)
       var difference = Math.abs(a - b);
       this.quatityday = difference/(1000 * 3600 * 24)
+      localStorage.quatityday = this.quatityday
     },
+  },
+
+  watch: {
+    check_in(newValue) {
+      localStorage.check_in = this.check_in;
+    },
+
+    check_out(newValue){
+      localStorage.check_out = this.check_out;
+    }
   },
 
   filters: {
@@ -209,8 +245,12 @@ export default {
 
   computed: {
     total_price(){
+      if(localStorage.quatityday){
+        this.quatityday = localStorage.quatityday
+      }
       return this.totalPrice = this.quatityday * this.room.price
-    }
+    },
+    ...mapGetters(['user_login', 'current_user'])
   },
   components: {
     StickyHeader
