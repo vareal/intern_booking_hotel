@@ -9,7 +9,6 @@
 <script>
   import SuggestHotel from './SuggestHotel.vue'
   import SearchOption from './search/SearchOption.vue'
-  import Header from './Header.vue'
 
   export default {
     data: function(){
