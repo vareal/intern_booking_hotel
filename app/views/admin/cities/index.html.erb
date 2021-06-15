@@ -36,7 +36,7 @@
           <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+city.id.to_s %>>
             <i class="far fa-edit"></i>
           </button>
-          <%= link_to admin_city_path(id: city), remote: true, method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger city-item" do %>
+          <%= link_to admin_city_path(id: city.id), remote: true, method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger city-item" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>
