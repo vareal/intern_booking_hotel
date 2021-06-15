@@ -6,11 +6,9 @@ document.addEventListener("turbolinks:load", function() {
       arrows: false,
       dots: true
     });
-    $('.gallery').slick({
-      autoplay: true,
-      autoplaySpeed: 2000,
+
+    $('.list-images-for-room').slick({
       arrows: true,
-      dots: true
     });
   });
 })

@@ -29,5 +29,7 @@ module InternBookingHotel
       Devise::SessionsController.layout "layouts/devise/application"
       Devise::RegistrationsController.layout "layouts/devise/application"
     end
+
+    config.autoload_paths += ["#{config.root}/app/serializers"]
   end
 end
