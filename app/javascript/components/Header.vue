@@ -23,10 +23,10 @@
                     <span>Đăng ký cho thuê nhà</span>
                   </a>
                   <template v-if="user_login == false">
-                    <a class="button login font-size-button" href="/auth/login">
+                    <a class="button login font-size-button" href="/users/sign_in">
                       <span>Đăng nhập</span>
                     </a>
-                    <a class="button sign-up font-size-button">
+                    <a class="button sign-up font-size-button" href="/users/sign_up">
                       <span> Tạo tài khoản </span>
                     </a>
                   </template>
@@ -74,7 +74,7 @@
                           Hồ sơ của tôi
                         </a>
                         <hr class="dropdown-divider">
-                        <a href="/auth/logout" data-method="delete" class="button btn btn-ground">
+                        <a href="/users/sign_out" data-method="delete" class="button btn btn-ground">
                           Thoát
                         </a>
                       </div>

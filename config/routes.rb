@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, path: "auth", path_names: {
-    sign_in: "login", sign_out: "logout", registration: "register" }
+  # devise_for :users, path: "auth", path_names: {
+  #   sign_in: "login", sign_out: "logout", registration: "register" }
+
+  devise_for :users, controllers: {
+    path: "auth", path_names: { sign_out: "logout" }, 
+    omniauth_callbacks: "users/omniauth_callbacks",
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
 
   scope module: "api" do
     namespace :v1 do
@@ -21,6 +28,8 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
+      root "dashboards#index"
+      resources :dashboards
       resources :cities
       resources :manage_publishers
     end
