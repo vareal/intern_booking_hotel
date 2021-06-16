@@ -90,45 +90,52 @@
   </div>
 </template>
 <script>
-export default {
-  props: {
-    user_login: Boolean,
-    current_user: Object
-  },
-  data: function(){
-    return {
-      show: false,
-      logo: {
-        alt: 'logo'
-      },
-      list_menu: [
-        {
-          content: 'Máy bay + K.sạn'
-        },
-        {
-          content: 'Chỗ ở'
-        },
-        {
-          content: 'Chuyến bay'
-        },
-        {
-          content: 'Ưu đãi hôm nay'
-        },
-        {
-          content: '<i class="fas fa-hotel"></i>Căn hộ'
-        },
-      ],
-    }
-  },
-  methods: {
-    active_dropdown(){
+  import {mapGetters} from 'vuex'
+
+  export default {
+    data: function(){
       return {
-        "is-active": this.show == true
+        show: false,
+        logo: {
+          alt: 'logo'
+        },
+        list_menu: [
+          {
+            content: 'Máy bay + K.sạn'
+          },
+          {
+            content: 'Chỗ ở'
+          },
+          {
+            content: 'Chuyến bay'
+          },
+          {
+            content: 'Ưu đãi hôm nay'
+          },
+          {
+            content: '<i class="fas fa-hotel"></i>Căn hộ'
+          },
+        ],
       }
     },
-    click_show(){
-      this.show = !this.show
+    methods: {
+      active_dropdown(){
+        return {
+          "is-active": this.show == true
+        }
+      },
+      click_show(){
+        this.show = !this.show
+      }
+    },
+
+    computed: {
+      ...mapGetters(['user_login', 'current_user'])
+    },
+
+    mounted() {
+      this.$store.dispatch('getUserlogin')
+      this.$store.dispatch('getCurrentUser')
     }
   }
-}
 </script>

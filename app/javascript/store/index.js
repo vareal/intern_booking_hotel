@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import getuser from './modules/getUser'
+
 Vue.use(Vuex)
 
 const storeData = {
-  state: {
+  modules: {
+    getuser
   }
 }
 
