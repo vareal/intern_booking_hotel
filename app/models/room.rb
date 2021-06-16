@@ -4,7 +4,8 @@ class Room < ApplicationRecord
   has_many_attached :images
 
   belongs_to :city
-  #belongs_to :user
+  belongs_to :user
+  belongs_to :order
 
   accepts_nested_attributes_for :images
 

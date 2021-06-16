@@ -222,6 +222,8 @@ export default {
       var difference = Math.abs(a - b);
       this.quatityday = difference/(1000 * 3600 * 24)
       localStorage.quatityday = this.quatityday
+      localStorage.room_id = this.room.id
+      localStorage.price = this.room.price
     },
   },
 

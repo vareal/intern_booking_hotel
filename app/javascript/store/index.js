@@ -11,7 +11,7 @@ const storeData = {
   },
 
   mutations: {
-    UNLAYOUT(state){
+    UNLAYOUT(state) {
       state.showLayout = !state.showLayout
     }
   },

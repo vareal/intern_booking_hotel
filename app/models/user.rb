@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :rooms, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   scope :get_publishers, -> { where role: 1 }
 

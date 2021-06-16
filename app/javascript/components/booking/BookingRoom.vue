@@ -49,7 +49,7 @@
                 <div class="input-wraper"></div>
                 <div class="input-wraper"></div>
               </div>
-              <button class="btn payment"> Thanh toán </button>
+              <button class="btn payment" @click="bookingRoom($event)"> Thanh toán </button>
             </div>
           </div>
           <div class="col-lg-2 col-md-1"></div>
@@ -121,6 +121,41 @@
 <script>
   import LayoutsHeaderBooking from './LayoutHeaderBooking'
   export default {
+    methods: {
+      bookingRoom(event){
+        let time_checkin = localStorage.check_in
+        let time_checkout = localStorage.check_out
+        let total_price = localStorage.quatityday * localStorage.price
+        let room_id = localStorage.room_id
+        try {
+          this.$axios.post('/v1/orders', {
+            order: {
+              time_checkin: time_checkin,
+              time_checkout: time_checkout,
+              total_price: total_price,
+              room_id: room_id
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
+
+        this.redirect_to_after_create()
+        this.remove_store_after_create()
+      },
+
+      redirect_to_after_create(){
+        this.$router.push('/')
+        location.reload()
+      },
+
+      remove_store_after_create(){
+        let keysToRemove = ["check_in", "check_out", "quatityday", "price",
+          "room_id"];
+        keysToRemove.forEach(k => localStorage.removeItem(k))
+      }
+    },
+
     mounted(){
       this.$store.commit('UNLAYOUT')
     },
