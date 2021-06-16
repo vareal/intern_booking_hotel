@@ -146,6 +146,7 @@
                     <div class="pick-time time-check-in">
                       <input type="date" class="form-control check-in"
                         v-model="check_in"
+                        @change="quatity_day()"
                       >
                     </div>
                     <p>
@@ -214,6 +215,7 @@ export default {
     if (localStorage.check_out) {
       this.check_out = localStorage.check_out;
     }
+
   },
   methods: {
     quatity_day(){
@@ -222,6 +224,8 @@ export default {
       var difference = Math.abs(a - b);
       this.quatityday = difference/(1000 * 3600 * 24)
       localStorage.quatityday = this.quatityday
+      localStorage.room_id = this.room.id
+      localStorage.price = this.room.price
     },
   },
 
@@ -237,9 +241,9 @@ export default {
 
   filters: {
     format_price: function(price){
-      return price.toLocaleString(
-        'vi', {style : 'currency', currency : 'VND'}
-      );
+      return price.toLocaleString('it-IT',
+                                  {style : 'currency',
+                                  currency : 'VND'});
     }
   },
 
@@ -250,7 +254,7 @@ export default {
       }
       return this.totalPrice = this.quatityday * this.room.price
     },
-    ...mapGetters(['user_login', 'current_user'])
+    ...mapGetters(['user_login', 'current_user', 'money'])
   },
   components: {
     StickyHeader

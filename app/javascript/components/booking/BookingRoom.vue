@@ -32,7 +32,7 @@
                       <div class="p--12 is-shadow-box rounded bg-white">
                         <div class="is-decorate is-green"></div>
                         <p class="c-gray-9 mb--0">Nhận phòng</p>
-                        <p class="p--giant mb--0">{{ check_in }}</p>
+                        <p class="p--giant mb--0">{{ checkin_time }}</p>
                         <p class="p--small-2 c-gray-9 mb--0">
                           {{getDay(check_in)}}
                         </p>
@@ -42,7 +42,7 @@
                       <div class="p--12 is-shadow-box rounded bg-white">
                         <div class="is-decorate is-orange"></div>
                         <p class="c-gray-9 mb--0">Trả phòng</p>
-                        <p class="p--giant mb--0">{{ check_out }}</p>
+                        <p class="p--giant mb--0">{{ checkout_time }}</p>
                         <p class="p--small-2 c-gray-9 mb--0">
                           {{getDay(check_out)}}
                         </p>
@@ -53,7 +53,7 @@
                 <div class="input-wraper"></div>
                 <div class="input-wraper"></div>
               </div>
-              <button class="btn payment"> Thanh toán </button>
+              <button class="btn payment" @click="bookingRoom($event)"> Thanh toán </button>
             </div>
           </div>
           <div class="col-lg-2 col-md-1"></div>
@@ -84,8 +84,8 @@
                         <img src="./pic2.svg">
                       </span>
                       <span class="content">
-                        <b>2 đêm</b>
-                        17/06/2021 - 19/06/2021
+                        <b>{{ quatityday }} đêm</b>
+                        {{ checkin_time }} - {{ checkout_time }}
                       </span>
                     </div>
                     <div class="is-flex middle-xs">
@@ -98,8 +98,8 @@
                   <div class="checkup__price fadeIn">
                     <div class="middle-xs between-xs">
                       <div class="is-flex align-center">
-                        <span class="pr--6">Giá thuê 2 đêm</span>
-                        <span>1,000,000₫</span>
+                        <span class="pr--6">Giá thuê {{ money }} đêm</span>
+                        <span>{{ money }}</span>
                       </div>
                     </div>
                   </div>
@@ -108,7 +108,7 @@
                     <div class="middle-xs between-xs">
                       <div class="is-flex align-center">
                         <span class="extra-bold">Tổng tiền</span>
-                        <span class="extra-bold">1,000,000₫</span>
+                        <span class="extra-bold">{{ money }}</span>
                       </div>
                     </div>
                   </div>
@@ -124,19 +124,49 @@
 </template>
 <script>
   import LayoutsHeaderBooking from './LayoutHeaderBooking'
+  import {mapGetters} from 'vuex'
+
   export default {
     data() {
       return {
         check_in: localStorage.check_in,
-        check_out: localStorage.check_out
+        check_out: localStorage.check_out,
+        quatityday: localStorage.quatityday,
+        total_price: localStorage.quatityday * localStorage.price,
+        room_id: localStorage.room_id
       }
     },
 
-    mounted(){
-      this.$store.commit('UNLAYOUT')
-    },
-
     methods: {
+      bookingRoom(event){
+        try {
+          this.$axios.post('/v1/orders', {
+            order: {
+              time_checkin: this.check_in,
+              time_checkout: this.check_out,
+              total_price: this.total_price,
+              room_id: this.room_id
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
+
+        this.redirect_to_after_create()
+        this.remove_store_after_create()
+      },
+
+      redirect_to_after_create(){
+        this.$router.push('/')
+        location.reload()
+      },
+
+      remove_store_after_create(){
+        let keysToRemove = ["check_in", "check_out", "quatityday", "price",
+          "room_id"];
+        keysToRemove.forEach(k => localStorage.removeItem(k))
+      },
+
       getDay(day){
         var d = new Date(day);
         var weekday = new Array(7);
@@ -151,6 +181,17 @@
 
         return day_date
       }
+    },
+
+    mounted(){
+      this.$store.commit('UNLAYOUT')
+      this.$store.dispatch('format_date_checkin_time', this.check_in)
+      this.$store.dispatch('format_date_checkout_time', this.check_out)
+      this.$store.dispatch('format_money', this.total_price)
+    },
+
+    computed:{
+      ...mapGetters(['checkin_time', 'checkout_time', 'money'])
     },
 
     components:{

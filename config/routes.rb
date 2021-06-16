@@ -16,12 +16,14 @@ Rails.application.routes.draw do
       get "current_user", to: "api#current_user_api"
       get "user_login", to: "api#user_login"
       get "rooms/:id", to: "rooms#show"
+      post "orders", to: "orders#create"
     end
   end
 
   scope "(:locale)", locale: /en|vi/ do
     root "userpages#home"
     resources :cities
+
     namespace :publisher do
       patch "rooms", to: "rooms#update"
       get "publisher_pages", to: "publisherpages#home"

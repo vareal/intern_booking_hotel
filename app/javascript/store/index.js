@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import getuser from './modules/getUser'
+import format from './modules/format'
 
 Vue.use(Vuex)
 
@@ -11,13 +12,14 @@ const storeData = {
   },
 
   mutations: {
-    UNLAYOUT(state){
+    UNLAYOUT(state) {
       state.showLayout = !state.showLayout
     }
   },
 
   modules: {
-    getuser
+    getuser,
+    format
   }
 }
 
