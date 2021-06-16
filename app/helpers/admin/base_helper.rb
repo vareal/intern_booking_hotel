@@ -1,6 +1,6 @@
 module Admin::BaseHelper
   def admin_username
-    @sheets = current_user.last_name+" "+current_user.first_name
+    @sheets = "#{current_user.last_name} #{current_user.first_name}"
   end
 
   def full_title_for_admin page_title = ""
