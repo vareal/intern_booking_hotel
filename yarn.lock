@@ -8883,7 +8883,7 @@ vue-router@^3.5.1:
 
 vue-slick@^1.1.16:
   version "1.1.16"
-  resolved "https://registry.yarnpkg.com/vue-slick/-/vue-slick-1.1.16.tgz#ff063487f7bd63c45767afe9806e4ade880904bb"
+  resolved "https://registry.npmjs.org/vue-slick/-/vue-slick-1.1.16.tgz"
   integrity sha512-nHR4XKHfWSRnsJQG9kDCun8Mgj7UzR0JRzlcStCpLct3gPJl/WJ2hTEZUKZPuAh3J67c+AKQHM6jpQwqIiWbAg==
   dependencies:
     slick-carousel "^1.8.1"
@@ -8920,6 +8920,11 @@ vue@^2.6.12, vue@^2.6.13:
   version "2.6.13"
   resolved "https://registry.npmjs.org/vue/-/vue-2.6.13.tgz"
   integrity sha512-O+pAdJkce1ooYS1XyoQtpBQr9An+Oys3w39rkqxukVO3ZD1ilYJkWBGoRuadiQEm2LLJnCL2utV4TMSf52ubjw==
+
+vuelidate@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.npmjs.org/vuelidate/-/vuelidate-0.7.6.tgz"
+  integrity sha512-suzIuet1jGcyZ4oUSW8J27R2tNrJ9cIfklAh63EbAkFjE380iv97BAiIeolRYoB9bF9usBXCu4BxftWN1Dkn3g==
 
 vuex@^3.6.2:
   version "3.6.2"

@@ -36,7 +36,7 @@
       <div class="main-content">
         <div class="row">
           <div class="col-md-8 col-xs-12">
-            <div class="list-images-for-room">
+            <slick class="list-images-for-room">
               <div class="image-item">
                 <img src="https://cdn.luxstay.com/users/230114/-t-sgFu3O7GNt9v01XmcYFiU.jpg">
               </div>
@@ -46,7 +46,7 @@
               <div class="image-item">
                 <img src="https://cdn.luxstay.com/users/230114/-t-sgFu3O7GNt9v01XmcYFiU.jpg">
               </div>
-            </div>
+            </slick>
             <section class="content">
               <div class="row">
                 <div class="col-xs-12">
@@ -134,46 +134,7 @@
             <div class="room-sidebar">
               <div class="room-sidebar__content mb--18">
                 <div class="room-sidebar__wrap">
-                  <div class="room-sidebar__pricing">
-                    <p class="fadeIn">
-                      <span class="extra-bold">
-                        {{ total_price | format_price }}
-                      </span>
-                      <span class="p--small">/{{quatityday}}đêm</span>
-                    </p>
-                  </div>
-                  <div class="picker-date">
-                    <div class="pick-time time-check-in">
-                      <input type="date" class="form-control check-in"
-                        v-model="check_in"
-                      >
-                    </div>
-                    <p>
-                      đến
-                    </p>
-                    <div class="pick-time time-check-out">
-                      <input type="date" class="form-control check-out"
-                        v-model="check_out"
-                        @change="quatity_day()"
-                      >
-                    </div>
-                  </div>
-                  <div class="submit-booking-room">
-                    <div class="needLogin" v-if="user_login">
-                      <router-link :to="{ name: 'BookingRoom', params: { id: room.id }}"
-                        class="button button-b"
-                      >
-                        Đặt ngay
-                      </router-link>
-                    </div>
-                    <div class="needLogin" v-else>
-                      <router-link to="/auth/login"
-                        class="button button-b"
-                      >
-                        Login to booking room
-                      </router-link>
-                    </div>
-                  </div>
+                  <ValidateBooking v-bind:room="room"/>
                 </div>
               </div>
             </div>
@@ -184,78 +145,52 @@
   </div>
 </template>
 <script>
-import StickyHeader from '../layouts/StickyHeader.vue'
-import {mapGetters} from 'vuex'
+  import StickyHeader from '../layouts/StickyHeader.vue'
+  import {mapGetters} from 'vuex'
+  import Slick from 'vue-slick';
+  import ValidateBooking from './ValidateBooking.vue'
 
-export default {
-  data: function(){
-    return {
-      room: {},
-      check_in: '',
-      check_out: '',
-      quatityday: 1,
-      totalPrice: ''
-    }
-  },
-  mounted(){
-    let param = '/v1/rooms/' + this.$route.params.id
-    this.$axios.get(param)
-    .then(response => {
-      this.room = response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
-    if (localStorage.check_in) {
-      this.check_in = localStorage.check_in;
-    }
-
-    if (localStorage.check_out) {
-      this.check_out = localStorage.check_out;
-    }
-  },
-  methods: {
-    quatity_day(){
-      var a = new Date(this.check_in)
-      var b = new Date(this.check_out)
-      var difference = Math.abs(a - b);
-      this.quatityday = difference/(1000 * 3600 * 24)
-      localStorage.quatityday = this.quatityday
-      localStorage.room_id = this.room.id
-      localStorage.price = this.room.price
-    },
-  },
-
-  watch: {
-    check_in(newValue) {
-      localStorage.check_in = this.check_in;
-    },
-
-    check_out(newValue){
-      localStorage.check_out = this.check_out;
-    }
-  },
-
-  filters: {
-    format_price: function(price){
-      return price.toLocaleString(
-        'vi', {style : 'currency', currency : 'VND'}
-      );
-    }
-  },
-
-  computed: {
-    total_price(){
-      if(localStorage.quatityday){
-        this.quatityday = localStorage.quatityday
+  export default {
+    data: function(){
+      return {
+        room: {},
+        slickOptions: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true
+        }
       }
-      return this.totalPrice = this.quatityday * this.room.price
     },
-    ...mapGetters(['user_login', 'current_user'])
-  },
-  components: {
-    StickyHeader
-  },
-}
+
+    beforeUpdate() {
+      if (this.$refs.slick) {
+        this.$refs.slick.destroy();
+      }
+    },
+
+    updated() {
+      this.$nextTick(function () {
+        if (this.$refs.slick) {
+            this.$refs.slick.create(this.slickOptions);
+        }
+      });
+    },
+
+    mounted(){
+      let param = '/v1/rooms/' + this.$route.params.id
+      this.$axios.get(param)
+      .then(response => {
+        this.room = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+
+    components: {
+      StickyHeader,
+      Slick,
+      ValidateBooking
+    },
+  }
 </script>

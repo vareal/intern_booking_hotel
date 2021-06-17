@@ -11,13 +11,17 @@ import axios from 'axios'
 import VueRouter from 'vue-router'
 import { routes } from './routes'
 import store from '../store/index'
+import Slick from 'vue-slick';
+import Vuelidate from 'vuelidate'
 
 import VueSweetalert2 from 'vue-sweetalert2';
 
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VueRouter)
-Vue.use(VueSweetalert2);
+Vue.use(VueSweetalert2) 
+Vue.use(Vuelidate)
+
 
 Vue.prototype.$axios = axios
 require('../assets/style/index.scss')
