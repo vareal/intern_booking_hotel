@@ -150,6 +150,21 @@
               }
             }
           }
+
+          .submit-booking-room {
+            margin-top: 10px;
+            .needLogin {
+              a {
+                width: 100%;
+                color: #fff;
+                background-color: #5392f9;
+              }
+
+              a:hover {
+                background-color: rgb(162, 205, 255);
+              }
+            }
+          }
         }
       }
     }

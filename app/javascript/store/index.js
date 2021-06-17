@@ -6,6 +6,16 @@ import getuser from './modules/getUser'
 Vue.use(Vuex)
 
 const storeData = {
+  state: {
+    showLayout:  true
+  },
+
+  mutations: {
+    UNLAYOUT(state){
+      state.showLayout = !state.showLayout
+    }
+  },
+
   modules: {
     getuser
   }
