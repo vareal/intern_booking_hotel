@@ -16,13 +16,19 @@ Rails.application.routes.draw do
     root "userpages#home"
     resources :cities
     namespace :publisher do
+      patch "rooms", to: "rooms#update"
       get "publisher_pages", to: "publisherpages#home"
       resources :rooms
+      resources :manage_bills
     end
 
     namespace :admin do
+      patch "cities", to: "cities#update"
+      get "login" ,to: "login#new"
+
       resources :cities
       resources :manage_publishers
+      resources :register_requests
     end
   end
 end
