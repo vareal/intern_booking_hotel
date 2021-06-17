@@ -5,7 +5,7 @@ class Room < ApplicationRecord
 
   belongs_to :city
   belongs_to :user
-  belongs_to :order
+  has_one :order
 
   accepts_nested_attributes_for :images
 

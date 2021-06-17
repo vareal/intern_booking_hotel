@@ -2,6 +2,7 @@
   <div class="home-container">
     <section class="title-container-column">
       <SearchOption/>
+      <ListCity/>
       <SuggestHotel/>
     </section>
   </div>
@@ -9,17 +10,13 @@
 <script>
   import SuggestHotel from './SuggestHotel.vue'
   import SearchOption from './search/SearchOption.vue'
+  import ListCity from './layouts/ListCity.vue'
 
   export default {
-    data: function(){
-      return {
-        user_login: false,
-        current_user: {}
-      }
-    },
     components: {
       SearchOption,
       SuggestHotel,
-    }
+      ListCity
+    },
   }
 </script>

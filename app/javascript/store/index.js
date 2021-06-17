@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import getuser from './modules/getUser'
+import getcity from './modules/getCity'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ const storeData = {
   },
 
   modules: {
-    getuser
+    getuser,
+    getcity
   }
 }
 
