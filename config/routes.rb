@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #   sign_in: "login", sign_out: "logout", registration: "register" }
 
   devise_for :users, controllers: {
-    path: "auth", path_names: { sign_out: "logout" }, 
+    path: "auth", path_names: { sign_out: "logout" },
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -23,12 +23,17 @@ Rails.application.routes.draw do
     root "userpages#home"
     resources :cities
     namespace :publisher do
+      patch "rooms", to: "rooms#update"
       get "publisher_pages", to: "publisherpages#home"
       resources :rooms
+      resources :manage_bills
     end
 
     namespace :admin do
-      root "dashboards#index"
+      root "dashboard#index"
+      patch "cities", to: "cities#update"
+      get "login" ,to: "login#new"
+
       resources :dashboards
       resources :cities
       resources :manage_publishers

@@ -5,7 +5,7 @@
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
 
-<div class="search-bar"> 
+<div class="search-bar">
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + <%= t(".btn-add-new") %>
   </button>
@@ -30,10 +30,11 @@
       <tr>
         <th scope="row"><%= city.id %></th>
         <td><%= city.name %></td>
-        <td><%= image_tag(city.avatar, size: "52x52") %></td>
+        <td><%= image_tag(city.avatar, size: "52x52") if city.avatar.present? %></td>
         <td><%= city.rooms.count %></td>
         <td>
-          <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+city.id.to_s %>>
+          <button class= "badge rounded-pill bg-primary button-edit",
+          data-bs-toggle= "modal", data-bs-target=<%= "#edit#{city.id.to_s}" %>>
             <i class="far fa-edit"></i>
           </button>
           <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
@@ -41,7 +42,7 @@
           <% end %>
         </td>
       </tr>
-      <div class="modal fade" id=<%= "edit"+city.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id=<%= "edit#{city.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
