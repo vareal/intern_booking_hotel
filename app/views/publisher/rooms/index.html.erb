@@ -4,7 +4,7 @@
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
 
-<div class="search-bar"> 
+<div class="search-bar">
   <button type="button" class="btn btn-primary add-room" data-bs-toggle="modal" data-bs-target="#exampleModal">
     + <%= t(".btn-add-new") %>
   </button>
@@ -44,7 +44,7 @@
         <td>
           <%= get_status room.status %>
         </td>
-        
+
         <td>
           <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+room.id.to_s %>>
             <i class="far fa-edit"></i>
@@ -92,7 +92,7 @@
           <br>
           <br>
           <h5><%= t(".price-col")+": "+room.price.to_s %>vnđ</h5>
-          <p><%= t(".status-col") %>: 
+          <p><%= t(".status-col") %>:
             <%= room.status %>
           </p>
           <p>
@@ -127,7 +127,7 @@
           <%= f.text_field :description, class: "form-control", autocomplete: "off" %>
           <%= f.label :select_city %>
           <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select a City"}, {class:"form-select"} %>
-          
+
           <%= f.label :image %>
           <%= f.file_field :images, multiple: true, class: "form-control", autocomplete: "off" %>
           <br>
