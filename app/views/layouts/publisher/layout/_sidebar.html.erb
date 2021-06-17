@@ -24,10 +24,18 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to publisher_rooms_path, class: "nav-link active" do %>
+          <%= link_to publisher_rooms_path, class: active_for_sidebar(yield(:active_rooms)) do %>
             <i class="fas fa-laptop-house"></i>
             <p>
               <%= t(".room-btn") %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to publisher_manage_bills_path, class: active_for_sidebar(yield(:active_mbills)) do %>
+            <i class="fas fa-laptop-house"></i>
+            <p>
+              <%= t(".manage-bill-btn") %>
             </p>
           <% end %>
         </li>

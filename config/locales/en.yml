@@ -59,8 +59,9 @@ en:
           help-link: Help
         sidebar:
           dashboard-btn: Dashboard
-          manage-publisher: Manage Publisher
+          manage-publisher-btn: Manage Publisher
           cities-btn: Cities
+          register-requests-btn: Register Requests
     publisher:
       publisher_application:
         publisher-page: Publisher Page
@@ -73,6 +74,7 @@ en:
         sidebar:
           dashboard-btn: Dashboard
           room-btn: Rooms
+          manage-bill-btn: Manage Bills
   userpages:
     home:
       title: Welcome to Luxstay!
@@ -89,6 +91,7 @@ en:
         add-city-failed: "Add city failed"
       update:
         city-not-exist: "City not exist"
+        delete-failed: Delete Failed
       index:
         cities-title: List Cities
         btn-add-new: Add New
@@ -100,6 +103,9 @@ en:
         options-col: Options
         modal-add-room: Add new room
         modal-add-publisher: Add new publisher
+      destroy:
+        city-not-exist: "City not exist"
+        delete-failed: Delete Failed
     manage_publishers:
       index:
         manage-pub-title: Manage Publishers
@@ -113,6 +119,9 @@ en:
     dashboards:
       index:
         dashboards-title: Dashboard
+    register_requests:
+      index:
+        rreq-title: Register Requests
   publisher:
     rooms:
       create:
@@ -126,7 +135,13 @@ en:
         price-col: Price
         status-col: Status
         options-col: Options
-        des: Status
+        des: Description
         Openning: Openning
         Using: Using
         Pending: Pending
+      destroy: 
+        delete-failed: Delete failed
+        room-not-exist: Room Not Exist
+    manage_bills:
+      index:
+        mbills-title: Manage Bills

@@ -27,7 +27,15 @@
           <%= link_to admin_manage_publishers_path, class: active_for_sidebar(yield(:active_mp)) do %>
             <i class="fas fa-user-alt"></i>
             <p>
-              <%= t(".manage-publisher") %>
+              <%= t(".manage-publisher-btn") %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_register_requests_path, class: active_for_sidebar(yield(:active_rreq)) do %>
+            <i class="fas fa-file-invoice"></i>
+            <p>
+              <%= t(".register-requests-btn") %>
             </p>
           <% end %>
         </li>

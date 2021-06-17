@@ -1,5 +1,5 @@
 <% provide :page_title, t(".rooms-title") %>
-
+<% provide(:active_rooms, "active") %>
 <% flash.each do |message_type, message| %>
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
@@ -34,7 +34,7 @@
         </td>
 
         <td>
-          <%= image_tag(room.images.first.link, size: "52x52") %>
+          <%= image_tag(room.images.first, size: "52x52") %>
         </td>
 
         <td>
@@ -46,14 +46,40 @@
         </td>
         
         <td>
-          <%= link_to "#", class: "badge rounded-pill bg-primary" do %>
+          <button class= "badge rounded-pill bg-primary button-edit", data-bs-toggle= "modal", data-bs-target=<%= "#edit"+room.id.to_s %>>
             <i class="far fa-edit"></i>
-          <% end %>
-          <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
+          </button>
+          <%= link_to publisher_room_path(id: room.id),remote: true , method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger room-item" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>
       </tr>
+      <div class="modal fade" id=<%= "edit"+room.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><%= t(".modal-add-room") %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= form_for room, url: {action: :update, controller: "publisher/rooms"} do |f| %>
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
+                <%= f.label :price %>
+                <%= f.text_field :price, class: "form-control", autocomplete: "off" %>
+                <%= f.label :description %>
+                <%= f.text_field :description, class: "form-control", autocomplete: "off" %>
+                <%= f.label :select_city %>
+                <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select a City"}, {class:"form-select"} %>
+                <%= f.label :image %>
+                <%= f.file_field :images, multiple: true, class: "form-control", autocomplete: "off" %>
+                <br>
+                <%= f.submit "Add city", class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="modal fade" id=<%= "room_info_modal"+room.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -62,15 +88,12 @@
           <h4>
             <%= room.name %>
           </h4>
-          <%= image_tag(room.images.first.link, size: "520x440") %>
-          
-          <h5>Giá: <%= room.price %>vnđ</h5>
+          <%= image_tag(room.images.first, size: "520x440") %>
+          <br>
+          <br>
+          <h5><%= t(".price-col")+": "+room.price.to_s %>vnđ</h5>
           <p><%= t(".status-col") %>: 
-            <% if room.status == 1 %>
-              <%= t(".Openning") %>
-            <% else %>
-              <%= t(".Ussing") %>
-            <% end %>
+            <%= room.status %>
           </p>
           <p>
             <%= t(".des") %> : <br>
@@ -104,10 +127,9 @@
           <%= f.text_field :description, class: "form-control", autocomplete: "off" %>
           <%= f.label :select_city %>
           <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select a City"}, {class:"form-select"} %>
-          <%= f.fields_for(:images) do |imgs| %>
-            <%= imgs.label :link %>
-            <%= imgs.text_field :link, class: "form-control", autocomplete: "off" %>
-          <% end %>
+          
+          <%= f.label :image %>
+          <%= f.file_field :images, multiple: true, class: "form-control", autocomplete: "off" %>
           <br>
           <%= f.submit "Publish", class: "btn btn-success" %>
         <% end %>

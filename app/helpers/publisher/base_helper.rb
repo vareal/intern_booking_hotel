@@ -17,4 +17,9 @@ module Publisher::BaseHelper
       t(".#{status}")
     end
   end
+
+  def active_for_sidebar className = ""
+    base_cn= "nav-link"
+    className.empty? ? base_cn : className + " " + base_cn
+  end
 end

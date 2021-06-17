@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :dashboards
       resources :cities
       resources :manage_publishers
+      resources :register_requests
     end
   end
 end
