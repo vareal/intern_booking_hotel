@@ -1,1 +1,7 @@
 vi:
+  message:
+    order:
+      status_ok: Thành công
+      status_not: Thất bại
+      sucssess: Tạo thành công
+      danger: Tạo thất bại
