@@ -6,7 +6,7 @@
       <div class="image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block"><%= admin_username %></a>
       </div>
     </div>
     <!-- Sidebar Menu -->
@@ -16,7 +16,7 @@
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <%= link_to publisher_publisher_pages_path, class: active_for_sidebar(yield(:className)) do %>
+          <%= link_to admin_root_path, class: active_for_sidebar(yield(:active_dboard)) do %>
             <i class="me-3 far fa-clock fa-fw"></i>
             <p>
               <%= t(".dashboard-btn") %>

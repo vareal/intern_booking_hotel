@@ -1,5 +1,5 @@
 en:
-  devise:
+  users:
     sessions:
       new:
         account-title: Sign in
@@ -116,6 +116,9 @@ en:
         room-quantity-col: Room Quantity
         options-col: Options
         modal-add-publisher: Add new publisher
+    dashboards:
+      index:
+        dashboards-title: Dashboard
     register_requests:
       index:
         rreq-title: Register Requests
