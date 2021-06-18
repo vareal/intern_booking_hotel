@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     namespace :admin do
       patch "cities", to: "cities#update"
       get "login" ,to: "login#new"
+      patch "accept_request", to: "register_requests#update"
+      delete "delete_request", to: "register_requests#destroy"
 
       resources :cities
       resources :manage_publishers

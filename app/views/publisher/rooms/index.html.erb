@@ -34,7 +34,7 @@
         </td>
 
         <td>
-          <%= image_tag(room.images.first, size: "52x52") %>
+          <%= image_tag(room.images.first, size: "52x52") if room.images.present? %>
         </td>
 
         <td>
@@ -88,7 +88,7 @@
           <h4>
             <%= room.name %>
           </h4>
-          <%= image_tag(room.images.first, size: "520x440") %>
+          <%= image_tag(room.images.first, size: "520x440") if room.images.present? %>
           <br>
           <br>
           <h5><%= t(".price-col")+": "+room.price.to_s %>vnđ</h5>

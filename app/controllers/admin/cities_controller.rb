@@ -21,7 +21,7 @@ class Admin::CitiesController < Admin::BaseController
     if @city.update(city_params)
       redirect_to admin_cities_url
     else
-      flash[:danger]= t ".delete-failed"
+      flash[:danger]= t ".update-failed"
       redirect_to publisher_rooms_url
     end
   end
