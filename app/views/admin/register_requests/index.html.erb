@@ -2,35 +2,35 @@
 <% provide(:active_rreq, "active") %>
 
 <div class="rreq-container">
-  <% @reqRooms.each do |reqRoom| %>
-    <div class="card reqRoomItem">
-      <h5 class="card-header"><%= "\##{reqRoom.id} #{reqRoom.name}" %></h5>
+  <% @req_rooms.each do |req_room| %>
+    <div class="card req_roomItem">
+      <h5 class="card-header"><%= "\##{req_room.id} #{req_room.name}" %></h5>
       <div class="card-body">
-        <h5><%= t ".price-col" %>: <%= reqRoom.price %>đ</h5>
-        <p><%= reqRoom.description %></p>
+        <h5><%= t ".price-col" %>: <%= req_room.price %>đ</h5>
+        <p><%= req_room.description %></p>
         <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-        <%= link_to "Accept", admin_accept_request_path(id: reqRoom.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
-        <button type="button" class="btn btn-success modal_click" data-bs-toggle="modal" data-bs-target=<%= "\#reqRoom_info_modal_#{reqRoom.id.to_s}" %>>View Register</button>
-        <%= link_to "Delete", admin_delete_request_path(id: reqRoom.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
+        <%= link_to "Accept", admin_accept_request_path(id: req_room.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
+        <button type="button" class="btn btn-success modal_click" data-bs-toggle="modal" data-bs-target=<%= "\#req_room_info_modal_#{req_room.id.to_s}" %>>View Register</button>
+        <%= link_to "Delete", admin_delete_request_path(id: req_room.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
       </div>
     </div>
-    <div class="modal fade" id=<%= "reqRoom_info_modal_#{reqRoom.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id=<%= "req_room_info_modal_#{req_room.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
             <h4>
-              <%= reqRoom.name %>
+              <%= req_room.name %>
             </h4>
-            <%= image_tag(reqRoom.images.first, size: "520x440") if reqRoom.images.present? %>
+            <%= image_tag(req_room.images.first, size: "520x440") if req_room.images.present? %>
             <br>
             <br>
-            <h5><%= t(".price-col")+": "+reqRoom.price.to_s %>vnđ</h5>
+            <h5><%= t(".price-col")+": "+req_room.price.to_s %>vnđ</h5>
             <p><%= t(".status-col") %>:
-              <%= reqRoom.status %>
+              <%= req_room.status %>
             </p>
             <p>
               <%= t(".des") %> : <br>
-              <p><%= reqRoom.description %></p>
+              <p><%= req_room.description %></p>
             </p>
           </div>
         </div>

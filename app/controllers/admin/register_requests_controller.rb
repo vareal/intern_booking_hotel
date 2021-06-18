@@ -1,12 +1,12 @@
 class Admin::RegisterRequestsController < Admin::BaseController
-  before_action :get_reqRoom, only: %i(update destroy)
+  before_action :get_req_room, only: %i(update destroy)
 
   def index
-    @reqRooms = Room.all.get_req_rooms
+    @req_rooms = Room.all.get_req_rooms
   end
 
   def update
-    if @reqRoom.update(status: 1)
+    if @req_room.update(status: 1)
       respond_to :js
     else
       flash[:danger]= t ".approve-failed"
@@ -15,7 +15,7 @@ class Admin::RegisterRequestsController < Admin::BaseController
   end
 
   def destroy
-    if @reqRoom.destroy
+    if @req_room.destroy
       respond_to :js
     else
       flash[:danger]= t ".delete-failed"
@@ -24,9 +24,9 @@ class Admin::RegisterRequestsController < Admin::BaseController
   end
 
   private
-    def get_reqRoom
-      @reqRoom = Room.find_by(id: params[:id])
-      return if @reqRoom
+    def get_req_room
+      @req_room = Room.find_by(id: params[:id])
+      return if @req_room
       flash[:danger] = t ".room-not-exist"
       redirect_to admin_register_requests_url
     end
