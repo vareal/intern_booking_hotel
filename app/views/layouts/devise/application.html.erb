@@ -65,7 +65,7 @@
                   </div>
                   <div class="account-omiauth">
                     <div class="omiauth-facebook">
-                      <%= link_to "#", class: "btn sign-social" do %>
+                      <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn sign-social" do %>
                         <%= t ".omiauth-fb" %>
                         <span>
                           <%= image_tag Settings.omiauth.facebook %>
@@ -73,7 +73,7 @@
                       <% end %>
                     <div>
                     <div class="omiauth-gmail">
-                      <%= link_to "#", class: "btn sign-social" do %>
+                      <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn sign-social" do %>
                         <%= t ".omiauth-gg" %>
                         <span>
                           <%= image_tag Settings.omiauth.google %>
