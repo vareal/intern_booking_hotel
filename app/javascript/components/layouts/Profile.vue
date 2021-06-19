@@ -18,11 +18,10 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-8" v-if="choose_option == 0">
+      <div class="col-md-9" v-if="choose_option == 0">
         <OrderHistory/>
       </div>
-      <div class="col-md-8" v-else>
+      <div class="col-md-9" v-else>
       </div>
     </div>
   </div>

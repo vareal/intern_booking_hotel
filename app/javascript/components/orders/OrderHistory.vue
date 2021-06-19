@@ -66,7 +66,7 @@
               {{ status_badges(order.status) }}
               <td class="status_order">
                 <span class="badge rounded-pill badge"
-                  :class="badges"p
+                  :class="badges"
                 >
                   {{ title }}
                 </span>
@@ -97,6 +97,7 @@
         choose_option: 0,
         choose_order: 0,
         filter_options: [
+          {name: 'Chờ xác nhận'},
           {name: 'Sắp tới'},
           {name: 'Hoàn tất'},
           {name: 'Đã huỷ'}
@@ -140,6 +141,10 @@
 
       status_badges(status){
         switch (status) {
+          case "pending":
+            this.title = "Chờ xác nhận"
+            this.badges = "bg-warning"
+            break;
           case "approved":
             this.title = "Đang mượn phòng"
             this.badges = "bg-info"

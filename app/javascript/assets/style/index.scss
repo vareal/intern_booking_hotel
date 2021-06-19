@@ -742,7 +742,6 @@ a.navbar-link::after {
   }
 }
 
-
 #mmb-bookings-page {
   .filter-container {
     float: left;
@@ -856,6 +855,26 @@ a.navbar-link::after {
       background-color: rgb(83, 146, 249);
       color: rgb(255, 255, 255);
       box-shadow: rgb(230, 230, 230) 0px 1px 3px 1px;
+    }
+
+    .unactive {
+      color: rgb(255, 255, 255);
+      background-color: rgb(221, 223, 226);
+      box-shadow: none;
+    }
+  }
+
+  .no-booking-panel {
+    margin-top: 25px;
+    text-align: center;
+    color: #2a2a2e;
+    h3 {
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    span {
+      font-size: 14px;
     }
   }
 }

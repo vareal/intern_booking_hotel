@@ -7,6 +7,7 @@ class Api::V1::OrdersController < Api::V1::ApiController
   def create
     order = current_user.orders.build order_params
     if order.save
+      order.room.using!
       msg = { status: t("message.order.status_ok"),
         message:  t("message.order.sucssess") }
       json_response order

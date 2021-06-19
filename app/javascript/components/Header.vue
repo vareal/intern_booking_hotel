@@ -3,9 +3,9 @@
     <div class="container is-fullhd">
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a href="/">
+          <router-link :to="{name: 'Home'}">
             <img src="../assets/images/logo.png" v-bind:alt="logo.alt">
-          </a>
+          </router-link>
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
@@ -58,9 +58,9 @@
                         Tài khoản của tôi
                       </div>
                       <div class="list-content">
-                        <a href="#" class="dropdown-item">
+                        <router-link :to="{name: 'OrderHistory'}" class="dropdown-item">
                           Đặt chỗ của tôi
-                        </a>
+                        </router-link>
                         <a href="#" class="dropdown-item">
                           Hộp thư
                         </a>
