@@ -4,7 +4,7 @@ class Api::V1::CitiesController < Api::V1::ApiController
     params[:city_id] = first_city.id if Room.pluck(:city_id)
                                  .exclude?(params[:city_id].to_i)
     @get_room_from_city = Room.filter_by_city(params[:city_id])
-                              .limit Settings.room.limit
+                              .limit Settings.homepage.room.limit
     json_response @get_room_from_city
   end
 end

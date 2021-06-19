@@ -2,6 +2,7 @@ import Home from '../components/Home'
 import RoomDetail from '../components/room/RoomDetail'
 import BookingRoom from '../components/booking/BookingRoom'
 import Profile from '../components/layouts/Profile'
+import OrderHistory from '../components/orders/OrderHistory'
 
 export const routes = [
   {
@@ -20,8 +21,8 @@ export const routes = [
     component: BookingRoom
   },
   {
-    path: '/me/',
-    name: 'Profile',
+    path: '/me/order-history/',
+    name: 'OrderHistory',
     component: Profile
   }
 ]

@@ -4,5 +4,9 @@ class Order < ApplicationRecord
   belongs_to :room
   belongs_to :user
 
-  enum status: {pending: 0, approved: 1, returned: 2}
+  enum status: {approved: 0, returned: 1, canceled: 2}
+
+  scope :filter_by_oder, (lambda do |status|
+    where status: status if status.present?
+  end)
 end
