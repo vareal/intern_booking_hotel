@@ -23,6 +23,8 @@ module Publisher::BaseHelper
       when :cancel
         "danger"
       when :returned
+        "warning"
+      when :approved
         "success"
       end
     tag.span class: "badge bg-#{badges}" do
