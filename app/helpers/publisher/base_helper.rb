@@ -18,6 +18,18 @@ module Publisher::BaseHelper
     end
   end
 
+  def get_bill_status status
+    badges = case status.to_sym
+      when :cancel
+        "danger"
+      when :returned
+        "success"
+      end
+    tag.span class: "badge bg-#{badges}" do
+      t(".#{status}")
+    end
+  end
+
   def active_for_sidebar className = ""
     base_cn= "nav-link"
     className.empty? ? base_cn : className + " " + base_cn
