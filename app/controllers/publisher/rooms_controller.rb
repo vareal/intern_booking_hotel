@@ -1,6 +1,6 @@
 class Publisher::RoomsController < Publisher::BaseController
   before_action :find_room, only: :destroy
-  
+
   def index
     @room = Room.new
     @rooms = Room.all.page(params[:page]).per Settings.paginate
@@ -34,9 +34,9 @@ class Publisher::RoomsController < Publisher::BaseController
       flash[:danger] = t ".room-not-exist"
       redirect_to publisher_rooms_url
     end
-    
+
     def room_params
-      params.require(:room).permit(:name, :price, :description, 
+      params.require(:room).permit(:name, :price, :description,
         :city_id, images: [])
     end
 end

@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       root "dashboard#index"
       patch "cities", to: "cities#update"
       get "login" ,to: "login#new"
+      patch "accept_request", to: "register_requests#update"
+      delete "delete_request", to: "register_requests#destroy"
 
       resources :dashboards
       resources :cities

@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_060136) do
     t.string "name"
     t.integer "price"
     t.string "description"
-    t.integer "status", default: 1
+    t.integer "status", default: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "city_id"
