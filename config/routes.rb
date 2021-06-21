@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     namespace :publisher do
       patch "rooms", to: "rooms#update"
-      get "publisher_pages", to: "publisherpages#home"
+      get "dashboard", to: "publisherpages#index"
       resources :rooms
       resources :manage_bills
     end
