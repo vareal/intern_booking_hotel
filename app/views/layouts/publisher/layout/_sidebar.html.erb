@@ -16,7 +16,7 @@
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
         <li class="nav-item menu-open">
-          <%= link_to publisher_dashboard_path, class: "nav-link" do %>
+          <%= link_to publisher_dashboard_path, class: active_for_sidebar(yield(:active_dashboard)) do %>
             <i class="me-3 far fa-clock fa-fw"></i>
             <p>
               <%= t(".dashboard-btn") %>

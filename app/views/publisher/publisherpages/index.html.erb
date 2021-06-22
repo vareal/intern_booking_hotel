@@ -1,17 +1,20 @@
+<% provide :page_title, t(".dashboard-title") %>
+<% provide(:active_dashboard, "active") %>
+
 <div class="dashboard">
   <div class="row">
     <div class="col-lg-3 col-6">
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
-          <h3>150</h3>
+          <h3><%= @amount_of_order %></h3>
 
-          <p>New Orders</p>
+          <p><%= t ".new-order" %></p>
         </div>
         <div class="icon">
           <i class="far fa-calendar-plus"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer"><%= t ".more-info" %> <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -19,14 +22,14 @@
       <!-- small box -->
       <div class="small-box bg-success">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
+          <h3><%= @cancel_rate %><sup style="font-size: 20px">%</sup></h3>
 
-          <p>Bounce Rate</p>
+          <p><%= t ".cancel-rate" %></p>
         </div>
         <div class="icon">
           <i class="far fa-chart-bar"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer"><%= t ".more-info" %> <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -34,14 +37,14 @@
       <!-- small box -->
       <div class="small-box bg-warning">
         <div class="inner">
-          <h3>44</h3>
+          <h3><%= @amount_of_room %></h3>
 
-          <p>User Registrations</p>
+          <p><%= t ".total-room" %></p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="fas fa-home"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer"><%= t ".more-info" %> <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -49,16 +52,31 @@
       <!-- small box -->
       <div class="small-box bg-danger">
         <div class="inner">
-          <h3>65</h3>
+          <h3><%= @total_revenue %>tr</h3>
 
-          <p>Unique Visitors</p>
+          <p><%= t ".total-revenue" %></p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer"><%= t ".more-info" %> <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
   </div>
+  <div class="card-header ui-sortable-handle">
+    <h3 class="card-title">
+      <i class="fas fa-chart-area"></i>
+      <%= t ".revenue-per-day" %>
+    </h3>
+  </div>
+  <%= area_chart @get_rooms.joins(:order).group_by_day("orders.created_at").sum(:total_price), library: {vAxis: {title: "Revenue"}, hAxis: {title: 'Date'}} %>
+
+  <div class="card-header ui-sortable-handle">
+    <h3 class="card-title">
+      <i class="fas fa-chart-pie mr-1"></i>
+      <%= t ".order-per-day" %>
+    </h3>
+  </div>
+  <%= line_chart @get_rooms.joins(:order).group_by_day("orders.created_at").count, library: {vAxis: {title: "Order"}, hAxis: {title: 'Date'}} %>
 </div>

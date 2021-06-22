@@ -123,6 +123,16 @@ en:
       index:
         rreq-title: Register Requests
   publisher:
+    publisherpages:
+      index:
+        dashboard-title: Dashboard
+        new-order: New Orders
+        more-info: More info
+        cancel-rate: Cancel Rate
+        total-room: Total Rooms
+        total-revenue: Revenue/month
+        revenue-per-day: Revenue per day
+        order-per-day: Order per day
     rooms:
       create:
         publish-failed: Publish Failed
@@ -139,7 +149,7 @@ en:
         Openning: Openning
         Using: Using
         Pending: Pending
-      destroy: 
+      destroy:
         delete-failed: Delete failed
         room-not-exist: Room Not Exist
     manage_bills:
