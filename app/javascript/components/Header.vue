@@ -58,15 +58,16 @@
                         Tài khoản của tôi
                       </div>
                       <div class="list-content">
-                        <router-link :to="{name: 'OrderHistory'}" class="dropdown-item">
+                        <router-link :to="{name: 'OrderHistory', params: { id: 1}}" class="dropdown-item">
                           Đặt chỗ của tôi
                         </router-link>
                         <a href="#" class="dropdown-item">
                           Hộp thư
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <router-link :to="{name: 'Coin', params: { id: 4}}"
+                          class="dropdown-item">
                           Tiền Agoda
-                        </a>
+                        </router-link>
                         <a href="#" class="dropdown-item">
                           Nhận xét
                         </a>

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_160619) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
     t.integer "code", null: false
+    t.integer "coin_using"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|

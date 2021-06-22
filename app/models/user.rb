@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_one :wallet, dependent: :destroy
 
   scope :get_publishers, -> { where role: 1 }
 
@@ -10,9 +11,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+
   validates :avatar, length: {maximum: 250}
 
   enum role: {user: 0, publisher:1, admin: 2}
+
+  delegate :coin, to: :wallet, prefix: :user
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
