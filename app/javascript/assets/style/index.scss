@@ -221,6 +221,7 @@ a.navbar-link::after {
   margin-top: 48px;
   margin-bottom: 48px;
   text-align: center;
+  max-width: 1000px !important;
   .tilte-suggest {
     margin-bottom: 24px;
   }
@@ -256,6 +257,55 @@ a.navbar-link::after {
     }
     .active {
       border-bottom: 2px solid rgb(83, 146, 249);
+    }
+  }
+
+  .wrapper-room {
+    margin-top: 14px;
+    .room-item {
+      padding: 6px;
+      .link_to_room {
+        color: #0283df;
+        .image-room {
+          img {
+            object-fit: cover;
+            height: 10em;
+          }
+        }
+
+        .nameRoom {
+          padding: 2px;
+          .contentName {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+            color: rgb(42, 42, 46);
+          }
+        }
+      }
+    }
+  }
+
+  .read-more-city {
+    margin-top: 32px;
+    .primary-button {
+      position: relative;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      user-select: none;
+      background-color: rgb(83, 146, 249);
+      color: rgb(255, 255, 255);
+      box-shadow: rgb(196, 196, 196) 0px 1px 3px 1px;
+      transition: all 0.15s ease-in-out 0s;
+    }
+
+    .nameCity {
+      span {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+      }
     }
   }
 }
@@ -562,5 +612,63 @@ a.navbar-link::after {
   .content {
     margin-left: .5rem;
     line-height: 1.125rem;
+  }
+}
+
+.TopDestinationRail {
+  width: auto;
+  padding: 0 14%;
+  margin: 64px auto;
+  .TopDestinationItem__Image {
+    width: 124px;
+    height: 124px;
+    border-width: 1px;
+    border-radius: 50%;
+  }
+
+  .TopDestinationItem__Image:hover {
+    width: 128px;
+    height: 130px;
+    transition: transform .2s,-webkit-transform .2s;
+  }
+
+  .list-cites {
+    text-align: -webkit-center;
+    .TopDestinationItem__City {
+      color: #2a2a2e;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      display: block;
+    }
+
+    .CounterRoom {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+      color: rgb(115, 115, 115);
+      padding-top: 4px;
+    }
+  }
+
+  .slick-prev {
+    z-index: 1;
+  }
+
+  .title-content {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 500;
+    color: rgb(42, 42, 46);
+    padding-bottom: 8px;
+    display: block;
+    text-align: center;
+  }
+
+  .url-detail {
+    margin-right: 0px;
+    margin-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 }

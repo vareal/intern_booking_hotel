@@ -20,3 +20,5 @@ valid:
       length: 100
 homepage:
   get_city: 5
+  room:
+    limit: 8
