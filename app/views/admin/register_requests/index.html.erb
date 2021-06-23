@@ -2,26 +2,39 @@
 <% provide(:active_rreq, "active") %>
 
 <div class="rreq-container">
-  <div class="card">
-    <h5 class="card-header">#1 Hong Ha</h5>
-    <div class="card-body">
-      <h5 class="card-title">Request title</h5>
-      <p class="card-text">Request content</p>
-      <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-      <button type="button" class="btn btn-primary">Accept</button>
-      <button type="button" class="btn btn-success">View Register</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+  <% @req_rooms.each do |req_room| %>
+    <div class="card req_roomItem">
+      <h5 class="card-header"><%= "\##{req_room.id} #{req_room.name}" %></h5>
+      <div class="card-body">
+        <h5><%= t ".price-col" %>: <%= req_room.price %>đ</h5>
+        <p><%= req_room.description %></p>
+        <p class="card-text"><small class="text-muted">3 mins ago</small></p>
+        <%= link_to "Accept", admin_accept_request_path(id: req_room.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
+        <button type="button" class="btn btn-success modal_click" data-bs-toggle="modal" data-bs-target=<%= "\#req_room_info_modal_#{req_room.id.to_s}" %>>View Register</button>
+        <%= link_to "Delete", admin_delete_request_path(id: req_room.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <h5 class="card-header">#2 Thanh Son</h5>
-    <div class="card-body">
-      <h5 class="card-title">Request title</h5>
-      <p class="card-text">Request content</p>
-      <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-      <button type="button" class="btn btn-primary">Accept</button>
-      <button type="button" class="btn btn-success">View Register</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+    <div class="modal fade" id=<%= "req_room_info_modal_#{req_room.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>
+              <%= req_room.name %>
+            </h4>
+            <%= image_tag(req_room.images.first, size: "520x440") if req_room.images.present? %>
+            <br>
+            <br>
+            <h5><%= t(".price-col")+": "+req_room.price.to_s %>vnđ</h5>
+            <p><%= t(".status-col") %>:
+              <%= req_room.status %>
+            </p>
+            <p>
+              <%= t(".des") %> : <br>
+              <p><%= req_room.description %></p>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

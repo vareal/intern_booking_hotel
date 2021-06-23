@@ -221,6 +221,7 @@ a.navbar-link::after {
   margin-top: 48px;
   margin-bottom: 48px;
   text-align: center;
+  max-width: 1000px !important;
   .tilte-suggest {
     margin-bottom: 24px;
   }
@@ -256,6 +257,55 @@ a.navbar-link::after {
     }
     .active {
       border-bottom: 2px solid rgb(83, 146, 249);
+    }
+  }
+
+  .wrapper-room {
+    margin-top: 14px;
+    .room-item {
+      padding: 6px;
+      .link_to_room {
+        color: #0283df;
+        .image-room {
+          img {
+            object-fit: cover;
+            height: 10em;
+          }
+        }
+
+        .nameRoom {
+          padding: 2px;
+          .contentName {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+            color: rgb(42, 42, 46);
+          }
+        }
+      }
+    }
+  }
+
+  .read-more-city {
+    margin-top: 32px;
+    .primary-button {
+      position: relative;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      user-select: none;
+      background-color: rgb(83, 146, 249);
+      color: rgb(255, 255, 255);
+      box-shadow: rgb(196, 196, 196) 0px 1px 3px 1px;
+      transition: all 0.15s ease-in-out 0s;
+    }
+
+    .nameCity {
+      span {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+      }
     }
   }
 }
@@ -562,5 +612,250 @@ a.navbar-link::after {
   .content {
     margin-left: .5rem;
     line-height: 1.125rem;
+  }
+}
+
+.TopDestinationRail {
+  width: auto;
+  padding: 0 14%;
+  margin: 64px auto;
+  .TopDestinationItem__Image {
+    width: 124px;
+    height: 124px;
+    border-width: 1px;
+    border-radius: 50%;
+  }
+
+  .TopDestinationItem__Image:hover {
+    width: 128px;
+    height: 130px;
+    transition: transform .2s,-webkit-transform .2s;
+  }
+
+  .list-cites {
+    text-align: -webkit-center;
+    .TopDestinationItem__City {
+      color: #2a2a2e;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      display: block;
+    }
+
+    .CounterRoom {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+      color: rgb(115, 115, 115);
+      padding-top: 4px;
+    }
+  }
+
+  .slick-prev {
+    z-index: 1;
+  }
+
+  .title-content {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 500;
+    color: rgb(42, 42, 46);
+    padding-bottom: 8px;
+    display: block;
+    text-align: center;
+  }
+
+  .url-detail {
+    margin-right: 0px;
+    margin-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+.container-agoda {
+  width: 986px;
+  margin: 0 auto;
+  .mmb-left-pane {
+    background: #fff;
+    box-shadow: 7px 0 8px #e9ebee;
+    display: table-cell;
+    vertical-align: top;
+    width: 218px;
+    .mmb-menu-component {
+      margin-top: 21px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      a {
+        padding: 6px;
+        color: #5392f9;
+        display: block;
+        min-height: 50px;
+        text-decoration: none;
+        svg {
+          padding-left: 8px;
+          display: inline-block;
+        }
+
+        .fa-money-check-alt {
+          font-size: 25px;
+        }
+
+        .fa-comment-alt {
+          font-size: 31px;
+        }
+
+        .fa-star {
+          font-size: 28px;
+        }
+
+        .fa-calendar {
+          font-size: 35px;
+        }
+
+        .fa-user {
+          font-size: 35px;
+        }
+
+        span {
+          display: inline-block;
+          margin: 16px 0;
+          vertical-align: middle;
+          margin-top: 0px;
+        }
+
+        .content {
+          font-weight: 600;
+          font-size: 13px;
+        }
+      }
+
+      .active {
+        border-right: 3px #5392f9 solid;
+        background-color: #f8f7f9;
+        span {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+
+#mmb-bookings-page {
+  .filter-container {
+    float: left;
+    margin-bottom: 16px;
+    .filter-option {
+      color: #5392f9;
+      border-bottom-color: #dddfe2;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-block;
+      text-align: center;
+      padding: 8px 16px;
+      border-bottom: 2px solid;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .active {
+      color: #2a2a2e;
+      border-bottom-color: #d5d8df;
+    }
+  }
+
+  .block-switch {
+    float: right;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid;
+    display: inline-block;
+    height: 40px;
+    line-height: 2.75;
+    user-select: none;
+    cursor: default;
+    .switch-title {
+      font-weight: 700;
+      padding: 0 4px;
+      color: #2a2a2e;
+    }
+
+    .switch-option {
+      padding: 0 4px;
+      cursor: pointer;
+      height: 38px;
+      color: #5392f9;
+    }
+
+    .option-selected {
+      color: #2a2a2e;
+      background-color: #e9ebee;
+    }
+  }
+
+  .block-switch div {
+    display: inline-block;
+  }
+
+  .search-booking {
+    font-size: 14px;
+    text-align: left;
+    display: flex;
+    clear: both;
+    .group-form {
+      flex-direction: column;
+      width: 30%;
+      margin-right: 8px;
+      margin-left: 0px;
+      display: flex;
+      label {
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        outline-color: #75a8f9;
+        display: block;
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+        color: rgb(42, 42, 46);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(206, 208, 212);
+        background-clip: padding-box;
+        box-sizing: border-box;
+        appearance: none;
+        border-radius: 0px;
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+
+  .button-submit {
+    margin: 13px 0px 0px;
+    padding-top: 16px;
+    font-weight: lighter;
+    width: 30%;
+    .btn-pimare {
+      position: relative;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      user-select: none;
+      background-color: rgb(83, 146, 249);
+      color: rgb(255, 255, 255);
+      box-shadow: rgb(230, 230, 230) 0px 1px 3px 1px;
+    }
   }
 }

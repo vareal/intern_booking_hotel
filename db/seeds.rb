@@ -13,6 +13,27 @@ City.create(
 City.create(
   name: "Đà Lạt"
 )
+City.create(
+  name: "Nha Trang"
+)
+City.create(
+  name: "Đảo Phú Quốc"
+)
+City.create(
+  name: "Phan Thiết"
+)
+City.create(
+  name: "Cần Thơ"
+)
+City.create(
+  name: "Hạ Long"
+)
+City.create(
+  name: "Hội An"
+)
+City.create(
+  name: "Quy Nhơn(Bình Định)"
+)
 
 User.create!(
   first_name: "Truong Viet",
@@ -23,10 +44,10 @@ User.create!(
   role: 1
 )
 
-5.times do |n|
+10.times do |n|
   name = "Room-#{n+1}"
   fist_city = City.find_by(name: "Hồ Chí Minh")
-  city_id = fist_city.id + n
+  city_id = fist_city.id
   user_id = User.find_by email: "tvbach@gmail.com"
   Room.create!(
     name: name,
