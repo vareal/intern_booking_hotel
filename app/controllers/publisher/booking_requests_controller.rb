@@ -2,11 +2,11 @@ class Publisher::BookingRequestsController < Publisher::BaseController
   before_action :get_req_order, only: %i(update destroy)
 
   def index
-    @req_orders = Order.all.get_req_orders
+    @req_orders = Order.pending
   end
 
   def update
-    if @req_order.update(status: 1)
+    if @req_order.approved!
       respond_to :js
     else
       flash[:danger]= t ".approve-failed"
@@ -15,7 +15,7 @@ class Publisher::BookingRequestsController < Publisher::BaseController
   end
 
   def destroy
-    if @req_order.update(status: 3)
+    if @req_order.cancel!
       respond_to :js
     else
       flash[:danger]= t ".cancel-failed"
