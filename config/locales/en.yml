@@ -91,7 +91,7 @@ en:
         add-city-failed: "Add city failed"
       update:
         city-not-exist: "City not exist"
-        delete-failed: Delete Failed
+        update-failed: Update Failed
       index:
         cities-title: List Cities
         btn-add-new: Add New
@@ -122,6 +122,13 @@ en:
     register_requests:
       index:
         rreq-title: Register Requests
+        price-col: Price
+        status-col: Status
+        des: Description
+      update:
+        approve-failed: Approve Failed
+        delete-failed: Delete Failed
+        room-not-exist: Room not exist
   publisher:
     publisherpages:
       index:

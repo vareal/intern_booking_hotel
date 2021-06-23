@@ -30,7 +30,7 @@
       <tr>
         <th scope="row"><%= city.id %></th>
         <td><%= city.name %></td>
-        <td><%= image_tag(city.avatar, size: "52x52") if city.avatar.present? %></td>
+        <td><%= image_tag(city.image, size: "52x52") if city.image.present? %></td>
         <td><%= city.rooms.count %></td>
         <td>
           <button class= "badge rounded-pill bg-primary button-edit",

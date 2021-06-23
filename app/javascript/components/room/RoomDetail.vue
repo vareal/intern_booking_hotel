@@ -215,7 +215,6 @@ export default {
     if (localStorage.check_out) {
       this.check_out = localStorage.check_out;
     }
-
   },
   methods: {
     quatity_day(){
@@ -227,6 +226,10 @@ export default {
       localStorage.room_id = this.room.id
       localStorage.price = this.room.price
     },
+
+    check_out(newValue){
+      localStorage.check_out = this.check_out;
+    }
   },
 
   watch: {
