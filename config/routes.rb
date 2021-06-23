@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get "user_login", to: "api#user_login"
       get "rooms/:id", to: "rooms#show"
       post "orders", to: "orders#create"
+      get "filter_order", to: "orders#index"
     end
   end
 
