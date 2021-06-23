@@ -19,17 +19,35 @@
         </li>
       </ul>
       <div class="wrapper-room">
-        <div class="list-room">
+        <div class="list-room row">
           <div
-            class="room-item"
+            class="room-item col-md-3"
             v-for="(room, index) in rooms"
             :key= "index"
           >
-            <router-link :to="{ name: 'RoomDetail', params: { id: room.id }}">
-              {{room.name}}
+            <router-link :to="{ name: 'RoomDetail', params: { id: room.id }}"
+              class="link_to_room"
+            >
+              <div class="room-item-wraper">
+                <div class="image-room">
+                  <img src="../assets/images/roomimage.jpeg">
+                </div>
+                <div class="nameRoom">
+                  <span class="contentName">
+                    {{room.name}}
+                  </span>
+                </div>
+              </div>
             </router-link>
           </div>
         </div>
+      </div>
+      <div class="read-more-city">
+        <button class="button primary-button">
+          <div class="nameCity">
+            <span>Xem thêm các chỗ nghỉ</span>
+          </div>
+        </button>
       </div>
     </div>
   </div>

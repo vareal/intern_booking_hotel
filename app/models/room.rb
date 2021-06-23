@@ -3,6 +3,8 @@ class Room < ApplicationRecord
 
   has_many_attached :images
 
+  scope :get_req_rooms, -> { where status: 2 }
+
   belongs_to :city
   belongs_to :user
   has_one :order

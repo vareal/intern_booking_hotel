@@ -1,4 +1,9 @@
 class Api::V1::OrdersController < Api::V1::ApiController
+  def index
+    @orders = current_user.orders.filter_by_oder params[:status]
+    json_response @orders
+  end
+
   def create
     order = current_user.orders.build order_params
     if order.save
