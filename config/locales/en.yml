@@ -75,6 +75,7 @@ en:
           dashboard-btn: Dashboard
           room-btn: Rooms
           manage-bill-btn: Manage Bills
+          booking-request-btn: Booking Request
   userpages:
     home:
       title: Welcome to Luxstay!
@@ -152,3 +153,17 @@ en:
     manage_bills:
       index:
         mbills-title: Manage Bills
+    booking_requests:
+      index:
+        bkreq-title: Booking Requests
+        date: Date
+        user-booking: Booking user
+        total-price: Total price
+        approve-message: Request booking has been approved by
+        cancel-message: Request booking has been canceled by
+      update:
+        approve-failed: Approve Failed
+        not-found-request: Not Found Request
+      destroy:
+        cancel-failed: Cancel Failed
+        not-found-request: Not Found Request
