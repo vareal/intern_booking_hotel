@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
     namespace :publisher do
       patch "rooms", to: "rooms#update"
-      get "publisher_pages", to: "publisherpages#home"
+      get "dashboard", to: "publisherpages#index"
       patch "accept_request", to: "booking_requests#update"
       delete "delete_request", to: "booking_requests#destroy"
 

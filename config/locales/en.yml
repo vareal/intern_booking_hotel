@@ -131,6 +131,16 @@ en:
         delete-failed: Delete Failed
         room-not-exist: Room not exist
   publisher:
+    publisherpages:
+      index:
+        dashboard-title: Dashboard
+        new-order: New Orders
+        more-info: More info
+        cancel-rate: Cancel Rate
+        total-room: Total Rooms
+        total-revenue: Revenue/month
+        revenue-per-day: Revenue per day
+        order-per-day: Order per day
     rooms:
       create:
         publish-failed: Publish Failed
