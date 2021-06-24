@@ -22,10 +22,27 @@ const getOrderModule = {
         console.log(error)
       }
     },
+
+    async search_by_code({commit}, data){
+      try {
+        const response = await axios.get('/v1/looking_my_order', {
+                                    params: {
+                                      code: data
+                                    }
+                                  })
+        commit('SEARCH_BY_CODE', response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
 
   mutations: {
     SET_ORDERS(state, object) {
+      state.orders = object
+    },
+
+    SEARCH_BY_CODE(state, object) {
       state.orders = object
     }
   }

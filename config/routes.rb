@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get "rooms/:id", to: "rooms#show"
       post "orders", to: "orders#create"
       get "filter_order", to: "orders#index"
+      get "looking_my_order", to: "search_order#index"
     end
   end
 
