@@ -29,12 +29,16 @@ Rails.application.routes.draw do
     namespace :publisher do
       patch "rooms", to: "rooms#update"
       get "dashboard", to: "publisherpages#index"
+      patch "accept_request", to: "booking_requests#update"
+      delete "delete_request", to: "booking_requests#destroy"
+
+      resources :booking_requests
       resources :rooms
       resources :manage_bills
     end
 
     namespace :admin do
-      root "dashboard#index"
+      root "dashboards#index"
       patch "cities", to: "cities#update"
       get "login" ,to: "login#new"
       patch "accept_request", to: "register_requests#update"
