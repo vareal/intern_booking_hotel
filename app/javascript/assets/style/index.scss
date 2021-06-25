@@ -613,6 +613,17 @@ a.navbar-link::after {
     margin-left: .5rem;
     line-height: 1.125rem;
   }
+
+  .coin-mark {
+    margin-top: 15px;
+    span {
+      color:  rgb(83, 146, 249);
+    }
+
+    span.pr--6 {
+      cursor: pointer;
+    }
+  }
 }
 
 .TopDestinationRail {
@@ -875,6 +886,44 @@ a.navbar-link::after {
 
     span {
       font-size: 14px;
+    }
+  }
+}
+
+.giftcard-summary-image {
+  width: 100%;
+  height: 40%;
+}
+
+.giftcard-info {
+  padding: 25px;
+  .list-table {
+    text-align: center;
+    li {
+      span {
+        font-size: 17px;
+        font-weight: 700;
+        color: #2a2a2e;
+      }
+    }
+  }
+
+  .group-form {
+    text-align: center;
+    display: grid;
+    padding: 40px;
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    button {
+      margin-top: 10px;
+      color: #fff;
+      background-color: #5392f9;
     }
   }
 }

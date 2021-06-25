@@ -53,7 +53,9 @@
                 <div class="input-wraper"></div>
                 <div class="input-wraper"></div>
               </div>
-              <button class="btn payment" @click="bookingRoom($event)"> Thanh toán </button>
+              <button class="btn payment" @click="bookingRoom($event)">
+                Thanh toán
+              </button>
             </div>
           </div>
           <div class="col-lg-2 col-md-1"></div>
@@ -98,8 +100,19 @@
                   <div class="checkup__price fadeIn">
                     <div class="middle-xs between-xs">
                       <div class="is-flex align-center">
-                        <span class="pr--6">Giá thuê {{ money }} đêm</span>
+                        <span class="pr--6">Giá thuê {{ quatityday }} đêm</span>
                         <span>{{ money }}</span>
+                      </div>
+                      <div class="is-flex align-center coin-mark">
+                        <span class="pr--6"  @click="active_modal()">
+                          Sử dụng coin
+                          <span class="using-coin">
+                            <i class="fas fa-search-dollar"></i>
+                          </span>
+                        </span>
+                        <span>
+                          {{ using_coin | format_price }}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -108,7 +121,9 @@
                     <div class="middle-xs between-xs">
                       <div class="is-flex align-center">
                         <span class="extra-bold">Tổng tiền</span>
-                        <span class="extra-bold">{{ money }}</span>
+                        <span class="extra-bold">
+                          {{ total_price | format_price }}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -119,6 +134,48 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="modal"
+      v-if="active == true"
+      :class="{'is-active': active }"
+    >
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="giftcards-content">
+          <div class="giftcard-summary-image-container">
+            <img class="giftcard-summary-image" src="../payment/gift.png">
+          </div>
+          <div class="giftcard-info">
+            <ul class="list-table">
+              <li>
+                <span>Tổng số dư hiện tại:</span>
+                <span class="giftcard-balance-value">
+                  {{ coins | format_price }}
+                </span>
+              </li>
+            </ul>
+            <div class="group-form">
+              <label>
+                <span class="sc-title">Số tiền bạn muốn sử dụng</span>
+              </label>
+              <input class="search-booking-by-id-input" type="number"
+                placeholder="Nhập số tiền" min="1" :max="coins"
+                v-model="payed_coin"
+              >
+              <button class="button"
+                :disabled="payed_coin == ''"
+                @click="save_coin_using()"
+              >
+                Sử dụng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="modal-close is-large"
+        aria-label="close"
+        @click="active = !active"
+      ></button>
     </div>
   </div>
 </template>
@@ -133,7 +190,9 @@
         check_out: localStorage.check_out,
         quatityday: localStorage.quatityday,
         total_price: localStorage.quatityday * localStorage.price,
-        room_id: localStorage.room_id
+        room_id: localStorage.room_id,
+        active: false,
+        payed_coin: '',
       }
     },
 
@@ -145,7 +204,8 @@
               time_checkin: this.check_in,
               time_checkout: this.check_out,
               total_price: this.total_price,
-              room_id: this.room_id
+              room_id: this.room_id,
+              coin_using: this.$store.getters.using_coin
             }
           })
         } catch (error) {
@@ -158,7 +218,6 @@
 
       redirect_to_after_create(){
         this.$router.push('/')
-        location.reload()
       },
 
       remove_store_after_create(){
@@ -180,6 +239,17 @@
         var day_date = weekday[d.getDay()]
 
         return day_date
+      },
+
+      active_modal() {
+        this.active = !this.active
+      },
+
+      save_coin_using() {
+        localStorage.coin_using  = this.payed_coin
+        this.$store.commit('SET_USING_COIN', localStorage.coin_using)
+        this.total_price -= this.$store.getters.using_coin
+        this.active_modal()
       }
     },
 
@@ -188,11 +258,21 @@
       this.$store.dispatch('format_date_checkin_time', this.check_in)
       this.$store.dispatch('format_date_checkout_time', this.check_out)
       this.$store.dispatch('format_money', this.total_price)
+      this.$store.dispatch('get_Coins')
     },
 
     computed:{
-      ...mapGetters(['checkin_time', 'checkout_time', 'money'])
+      ...mapGetters(['checkin_time', 'checkout_time', 'money', 'coins',
+        'using_coin']),
     },
+
+    filters: {
+      format_price(price){
+        return parseInt(price).toLocaleString('it-IT',
+                                  {style : 'currency',
+                                  currency : 'VND'});
+    }
+  },
 
     components:{
       LayoutsHeaderBooking

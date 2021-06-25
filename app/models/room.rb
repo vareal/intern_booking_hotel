@@ -7,13 +7,12 @@ class Room < ApplicationRecord
 
   belongs_to :city
   belongs_to :user
-  has_one :order
 
   accepts_nested_attributes_for :images
 
-  #validates :name, presence: true, length: { maximum: Settings.room_model.name_max }
-  #validates :price, presence: true
-  #validates :description, presence: true, length: { maximum: Settings.room_model.des_max }
+  validates :name, presence: true, length: { maximum: Settings.room_model.name_max }
+  validates :price, presence: true
+  validates :description, presence: true, length: { maximum: Settings.room_model.des_max }
 
   enum status: {openning: 1, pending: 2, using: 3}
 

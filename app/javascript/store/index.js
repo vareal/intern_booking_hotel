@@ -5,6 +5,7 @@ import getuser from './modules/getUser'
 import format from './modules/format'
 import getcity from './modules/getCity'
 import getorder from './modules/getOrder'
+import getcoin from './modules/getCoin'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ const storeData = {
     getuser,
     format,
     getcity,
-    getorder
+    getorder,
+    getcoin
   }
 }
 
