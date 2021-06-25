@@ -4,6 +4,7 @@ import BookingRoom from '../components/booking/BookingRoom'
 import Profile from '../components/layouts/Profile'
 import OrderHistory from '../components/orders/OrderHistory'
 import Coin from '../components/payment/Coin'
+import SearchPage from '../components/search/SearchPage'
 
 export const routes = [
   {
@@ -35,6 +36,12 @@ export const routes = [
         path: ':id/giftcards',
         name: 'Coin',
         component: Coin
-    }]
+      }
+    ]
+  },
+  {
+    path: '/search-page/:name',
+    name: 'SearchPage',
+    component: SearchPage
   }
 ]

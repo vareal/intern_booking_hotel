@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get "filter_order", to: "orders#index"
       get "looking_my_order", to: "search_order#index"
       get "get_coin_in_wallet", to: "wallets#index"
+      get "search_room", to: "search_room#index"
     end
   end
 

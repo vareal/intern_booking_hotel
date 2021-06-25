@@ -6,6 +6,7 @@ import format from './modules/format'
 import getcity from './modules/getCity'
 import getorder from './modules/getOrder'
 import getcoin from './modules/getCoin'
+import getroom from './modules/getRoom'
 
 Vue.use(Vuex)
 
@@ -25,7 +26,8 @@ const storeData = {
     format,
     getcity,
     getorder,
-    getcoin
+    getcoin,
+    getroom
   }
 }
 

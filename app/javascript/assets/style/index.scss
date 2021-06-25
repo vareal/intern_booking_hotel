@@ -312,7 +312,7 @@ a.navbar-link::after {
 
 .tileContainer-wrapper {
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 3% 0;
   height: auto;
@@ -350,8 +350,8 @@ a.navbar-link::after {
       margin-bottom: 0px;
       padding-left: 32px;
       padding-right: 32px;
-      margin-left: 20px ;
-      width: 94%;
+      width: 85%;
+      margin: auto;
       left: auto;
       z-index: 1;
       -webkit-box-pack: center;
@@ -415,13 +415,31 @@ a.navbar-link::after {
       position: relative;
 
       .TabContent {
-        padding: 32px 48px 64px;
+        padding: 46px 43px 64px;
         width: 100%;
         position: relative;
-        box-shadow: 0px 1px 6px 2px rgba(82,78, 78, 0.2);
+        box-shadow: 0px 1px 6px 2px #524e4e33;
         border-radius: 16px;
         background-color: rgb(248, 247, 249);
       }
+
+      .OptionalSearch {
+        margin-top: 10px;
+        display: flex;
+        .IconBox--checkIn--checkOut {
+          width: 50%;
+          margin-right: 8px;
+          .vhd__datepicker__dummy-wrapper {
+            border-radius: 5px;
+          }
+        }
+
+        .IconBox--occupancy {
+          width: 50%;
+        }
+      }
+
+
 
       .TabContent__Search--button {
         margin: -20px auto auto;
@@ -435,6 +453,10 @@ a.navbar-link::after {
           box-shadow: 0px 1px 3px 1px  rgba(82,78, 78, 0.2);
           width: 30em;
         }
+      }
+
+      .fix-hight {
+        height: 3em;
       }
     }
   }
@@ -924,6 +946,154 @@ a.navbar-link::after {
       margin-top: 10px;
       color: #fff;
       background-color: #5392f9;
+    }
+  }
+}
+
+#searchPageVueRoot {
+  .container-vue {
+    width: 1053px;
+    margin: auto;
+    .main-column {
+      margin-top: 20px;
+    }
+
+    .JacketContent {
+      box-shadow: none;
+      min-height: 220px;
+      transition: box-shadow .2s ease-in-out;
+      border: 1px solid #dddfe2;
+    }
+
+    .sort-bar {
+      background-color: #fff;
+      display: flex;
+      border: 1px solid #dddfe2;
+      border-radius: 8px;
+      width: 100%;
+      .active {
+        background-color: #5392f9;
+        color: #fff;
+      }
+    }
+    .SortBar__Header{
+      border-radius: 7px 0 0 7px;
+      padding: 12px;
+      -webkit-box-align: center;
+      align-items: center;
+      background-color: rgb(248, 247, 249);
+      border-right: 1px solid rgb(221, 223, 226);
+    }
+
+    .sort-bar>div>span {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: rgb(115, 115, 115);
+    }
+
+    .SortBar__Item {
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      padding: 16px 10px;
+      line-height: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .hotel-list-container {
+      list-style-type: none;
+      .PropertyCard {
+        margin: 15px 0;
+        cursor: pointer;
+      }
+    }
+
+    .sort {
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-color: #dddfe2;
+    }
+
+    .sort-content {
+      .bg-check {
+        background-color: rgb(247, 228, 108);
+        color: rgb(42, 42, 46);
+        .fa-check {
+          color: rgb(58, 228, 109);
+        }
+      }
+
+      .bg-up {
+        background-color: rgb(144, 148, 156);
+        color: rgb(255, 255, 255);
+        .fa-angle-double-up {
+          color: rgb(255, 255, 255);
+        }
+      }
+
+      .room-infor {
+        margin-bottom: 8px;
+        .hotel-name {
+          color: #000;
+          cursor: pointer;
+          display: inline;
+          font-size: 1.1rem;
+          font-weight: 500;
+          line-height: 1;
+        }
+
+        .hotel-name:hover {
+          color: rgb(83, 146, 249);
+        }
+
+        .Address__Container {
+          color: #0283df;
+          font-size: 0.8rem;
+          font-weight: 700;
+        }
+      }
+    }
+    .price-infor {
+      text-align: right;
+      margin: 10px;
+      .final-price {
+        span {
+          color: #e12d2d;
+          font-size: 22px;
+          line-height: 22px;
+          font-weight: 700;
+        }
+      }
+
+      .room-benefit {
+        color: rgb(40, 135, 28);
+        span {
+          font-size: 12px;
+          line-height: 16px;
+          font-weight: 500;
+        }
+      }
+
+      .see-detail {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        button {
+          position: relative;
+          border: none;
+          padding: 12px;
+          border-radius: 4px;
+          user-select: none;
+          background-color: rgb(83, 146, 249);
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+
+    .search-panel {
+      font-size: 47px;
+      line-height: 3rem;
     }
   }
 }
