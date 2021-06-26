@@ -407,7 +407,6 @@
         }
         return this.totalPrice = this.quatityday * this.room.price
       },
-
       ...mapGetters(['user_login', 'current_user'])
     },
     components: {
@@ -416,3 +415,16 @@
     },
   }
 </script>
+<style lang="scss">
+  .input-group-person {
+    margin-top: 6px;
+    margin-bottom: 1rem;
+    .modal-booking-time  {
+      height: 2.625rem;
+      line-height: 2.625rem;
+      padding: 0 0.8rem;
+      border-radius: 5px;
+      border: 1px solid #ebebeb;
+    }
+  }
+</style>

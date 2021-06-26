@@ -299,3 +299,13 @@
     }
   }
 </script>
+<style lang="scss">
+  .checkup__footer {
+    border: 0;
+    padding: 0
+  }
+
+  .checkup__footer>div {
+    padding-top: 1.475rem;
+  }
+</style>
