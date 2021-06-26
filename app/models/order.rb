@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   ORDER_PARAMS = %i(total_price time_checkin
-                    time_checkout room_id coin_using).freeze
+                    time_checkout room_id coin_using
+                    capacity_adult capacity_child).freeze
 
   belongs_to :room
   belongs_to :user
@@ -25,6 +26,8 @@ class Order < ApplicationRecord
   scope :search_by_code, (lambda do |code|
     where "code LIKE ?", "%#{code}%" if code.present?
   end)
+
+  scope :order_booking, -> {order(created_at: :desc)}
 
   def update_coind_to_wallet
     return unless self.returned?

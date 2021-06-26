@@ -20,13 +20,9 @@ import "@fortawesome/fontawesome-free/js/all";
 var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 
-require("slick-carousel")
-
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
 });
-
-import 'index.js';
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

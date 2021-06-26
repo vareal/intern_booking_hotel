@@ -37,6 +37,18 @@
                     {{room.name}}
                   </span>
                 </div>
+                <div class="city-room">
+                  <div class="city-infr">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{ name_current_city }}</span>
+                  </div>
+                </div>
+                <div class="price-infor">
+                  <span class="content-infr">Tổng giá mỗi đêm</span>
+                </div>
+                <div class="final-price">
+                  <span>{{ room.price | format_price }}</span>
+                </div>
               </div>
             </router-link>
           </div>
@@ -45,7 +57,7 @@
       <div class="read-more-city">
         <button class="button primary-button">
           <div class="nameCity">
-            <span>Xem thêm các chỗ nghỉ</span>
+            <span>Xem thêm các chỗ nghỉ ({{ name_current_city }})</span>
           </div>
         </button>
       </div>
@@ -87,13 +99,17 @@
         .catch(error => {
           console.log(error);
         });
-      }
+      },
     },
 
     computed: {
       select_form_search() {
         let index = this.sellected
         return this.cities[index]
+      },
+
+      name_current_city() {
+        return this.select_form_search ? this.select_form_search.name : ''
       }
     },
 
@@ -116,3 +132,29 @@
     }
   }
 </script>
+<style lang="scss">
+  .room-item-wraper {
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    margin: -2px;
+    width: calc(100% + 4px);
+    text-align: left;
+    .price-infor {
+      .content-infr {
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 400;
+        color: rgb(115, 115, 115);
+      }
+    }
+
+    .final-price {
+      span {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 500;
+        color: rgb(225, 45, 45);
+      }
+    }
+  }
+</style>

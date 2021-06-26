@@ -36,7 +36,7 @@
       <div class="main-content">
         <div class="row">
           <div class="col-md-8 col-xs-12">
-            <div class="list-images-for-room">
+            <slick class="list-images-for-room">
               <div class="image-item">
                 <img src="https://cdn.luxstay.com/users/230114/-t-sgFu3O7GNt9v01XmcYFiU.jpg">
               </div>
@@ -46,7 +46,7 @@
               <div class="image-item">
                 <img src="https://cdn.luxstay.com/users/230114/-t-sgFu3O7GNt9v01XmcYFiU.jpg">
               </div>
-            </div>
+            </slick>
             <section class="content">
               <div class="row">
                 <div class="col-xs-12">
@@ -145,7 +145,7 @@
                   <div class="picker-date">
                     <div class="pick-time time-check-in">
                       <input type="date" class="form-control check-in"
-                        v-model="check_in"
+                        v-model="checkin"
                         @change="quatity_day()"
                       >
                     </div>
@@ -154,25 +154,91 @@
                     </p>
                     <div class="pick-time time-check-out">
                       <input type="date" class="form-control check-out"
-                        v-model="check_out"
+                        v-model="checkout"
                         @change="quatity_day()"
                       >
                     </div>
                   </div>
+                  <div class="input-group-person mt--6">
+                    <div class="modal-booking-time el-popover__reference"
+                      @click="show = !show"
+                    >
+                      <p class="cursor">{{ set_total_person() }} khách</p>
+                    </div>
+                    <div class="choose-person" v-if="show == true">
+                      <div class="select-number">
+                        <div class="select-number__title">
+                          <p>Người lớn</p>
+                        </div>
+                        <div class="el-input-number">
+                          <span class="el-input-number__decrease"
+                            @click="minus_person_adult($event, old_person, room.capacity_adult_person)"
+                            v-bind:class="over_flow_minus_adult(old_person, room.capacity_adult_person)"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </span>
+                          <div class="el-input">
+                            <input type="number" class="input-person"
+                              min="1" :max="room.capacity_adult_person"
+                              v-model="old_person"
+                            >
+                          </div>
+                          <span class="el-input-number__increase"
+                            @click="plus_person_adult($event, old_person, room.capacity_adult_person)"
+                            v-bind:class="over_flow_plus(old_person, room.capacity_adult_person)"
+                          >
+                            <i class="fas fa-plus"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="select-number">
+                        <div class="select-number__title">
+                          <p>Trẻ em</p>
+                        </div>
+                        <div class="el-input-number">
+                          <span class="el-input-number__decrease"
+                            @click="minus_person_child($event, child_person, room.capacity_adult_person)"
+                            v-bind:class="over_flow_minus_child(child_person, room.capacity_child_person)"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </span>
+                          <div class="el-input">
+                            <input type="number" class="input-person"
+                              min="0" :max="room.capacity_child_person"
+                              v-model="child_person"
+                            >
+                          </div>
+                          <span class="el-input-number__increase"
+                            @click="plus_person_child($event, child_person, room.capacity_child_person)"
+                            v-bind:class="over_flow_plus(child_person, room.capacity_child_person)"
+                          >
+                            <i class="fas fa-plus"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="is-flex align-center jbetween mt--30"
+                        @click="save_customers_when_use_choose_person()"
+                      >
+                        <div class="cursor bold c-primary">Áp dụng</div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="submit-booking-room">
                     <div class="needLogin" v-if="user_login">
-                      <router-link :to="{ name: 'BookingRoom', params: { id: room.id }}"
+                      <button
                         class="button button-b"
+                        @click="order_page()"
                       >
                         Đặt ngay
-                      </router-link>
+                      </button>
                     </div>
                     <div class="needLogin" v-else>
-                      <router-link to="/auth/login"
+                      <button
                         class="button button-b"
+                        :disabled="true"
                       >
                         Login to booking room
-                      </router-link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -185,74 +251,168 @@
   </div>
 </template>
 <script>
-import StickyHeader from '../layouts/StickyHeader.vue'
-import {mapGetters} from 'vuex'
+  import StickyHeader from '../layouts/StickyHeader.vue'
+  import {mapGetters} from 'vuex'
+  import Slick from 'vue-slick';
 
-export default {
-  data: function(){
-    return {
-      room: {},
-      check_in: '',
-      check_out: '',
-      quatityday: 1,
-      totalPrice: ''
-    }
-  },
-  mounted(){
-    let param = '/v1/rooms/' + this.$route.params.id
-    this.$axios.get(param)
-    .then(response => {
-      this.room = response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
-    if (localStorage.check_in) {
-      this.check_in = localStorage.check_in;
-    }
-
-    if (localStorage.check_out) {
-      this.check_out = localStorage.check_out;
-    }
-  },
-  methods: {
-    quatity_day(){
-      var a = new Date(this.check_in)
-      var b = new Date(this.check_out)
-      var difference = Math.abs(a - b);
-      this.quatityday = difference/(1000 * 3600 * 24)
-      localStorage.quatityday = this.quatityday
-      localStorage.room_id = this.room.id
-      localStorage.price = this.room.price
-    },
-
-    check_out(newValue){
-      localStorage.check_out = this.check_out;
-    }
-  },
-
-  watch: {
-    check_in(newValue) {
-      localStorage.check_in = this.check_in;
-    },
-
-    check_out(newValue){
-      localStorage.check_out = this.check_out;
-    }
-  },
-
-  computed: {
-    total_price(){
-      if(localStorage.quatityday){
-        this.quatityday = localStorage.quatityday
+  export default {
+    data: function(){
+      return {
+        room: {},
+        checkin: '',
+        checkout: '',
+        quatityday: 1,
+        totalPrice: '',
+        show: false,
+        old_person: 1,
+        child_person: 0,
       }
-      return this.totalPrice = this.quatityday * this.room.price
     },
-    ...mapGetters(['user_login', 'current_user', 'money'])
-  },
-  components: {
-    StickyHeader
-  },
-}
+    mounted(){
+      let param = '/v1/rooms/' + this.$route.params.id
+      this.$axios.get(param)
+      .then(response => {
+        this.room = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+      if (localStorage.check_in) {
+        this.checkin = localStorage.check_in;
+      }
+
+      if (localStorage.check_out) {
+        this.checkout = localStorage.check_out;
+      }
+
+      if (localStorage.old_person) {
+        this.old_person = localStorage.old_person;
+      }
+
+      if (localStorage.child_person) {
+        this.child_person = localStorage.child_person;
+      }
+
+      this.total_person()
+      this.set_total_person()
+    },
+    methods: {
+      quatity_day(){
+        var a = new Date(this.checkin)
+        var b = new Date(this.checkout)
+        var difference = Math.abs(a - b);
+        this.quatityday = difference/(1000 * 3600 * 24)
+        localStorage.quatityday = this.quatityday
+        localStorage.room_id = this.room.id
+        localStorage.price = this.room.price
+      },
+
+      check_out(newValue){
+        localStorage.check_out = this.checkout;
+      },
+
+      order_page(){
+        this.$router.replace({
+              name: 'BookingRoom',
+              params: {
+                id: this.$route.params.id
+              },
+          })
+        localStorage.name_room = this.room.name
+        localStorage.total_price = this.totalPrice
+        this.save_customers()
+      },
+
+      plus_person_adult(event, person, quatity){
+        if(person < quatity){
+          this.old_person ++
+        }
+      },
+
+      minus_person_adult(event, person, quatity){
+        if(person > 1){
+          this.old_person --
+        }
+      },
+
+      plus_person_child(event, person, quatity){
+        if(person < quatity){
+          this.child_person ++
+        }
+      },
+
+      minus_person_child(event, person, quatity){
+        if(person > 0){
+          this.child_person --
+        }
+      },
+
+      over_flow_plus(person, quatity){
+        return {
+          "is-disabled": person == quatity
+        }
+      },
+
+      over_flow_minus_child(person, quatity){
+        return {
+          "is-disabled": person == 0
+        }
+      },
+
+      over_flow_minus_adult(person, quatity){
+        return {
+          "is-disabled": person == 1
+        }
+      },
+
+      save_customers_when_use_choose_person() {
+        this.save_customers()
+        this.use_choose_person()
+      },
+
+      save_customers(){
+        localStorage.old_person = this.old_person;
+        localStorage.child_person = this.child_person;
+      },
+
+      use_choose_person(){
+        this.show = !this.show
+      },
+
+      set_total_person() {
+        if(isNaN(this.total_person())) {
+          return 1
+        }
+        else {
+          return this.total_person()
+        }
+      }
+    },
+
+    watch: {
+      checkin(newValue) {
+        localStorage.check_in = this.checkin;
+      },
+
+      checkout(newValue){
+        localStorage.check_out = this.checkout;
+      },
+    },
+
+    computed: {
+      total_price(){
+        if(localStorage.quatityday){
+          this.quatityday = localStorage.quatityday
+        }
+        return this.totalPrice = this.quatityday * this.room.price
+      },
+
+      ...mapGetters(['user_login', 'current_user'])
+    },
+    components: {
+      StickyHeader,
+      Slick
+    },
+  }
 </script>
