@@ -14,7 +14,6 @@ import store from '../store/index'
 import mixin from './mixin'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import mixin from './mixin'
 
 Vue.use(VueRouter)
 Vue.use(VueSweetalert2);
