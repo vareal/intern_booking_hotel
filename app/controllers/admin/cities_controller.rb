@@ -3,8 +3,12 @@ class Admin::CitiesController < Admin::BaseController
   before_action :find_city, only: :destroy
 
   def index
-    @city = City.new
-    @cities = City.page(params[:page]).per Settings.paginate
+    if current_user.nil? || !current_user.admin?
+      redirect_to root_path
+    else
+      @city = City.new
+      @cities = City.page(params[:page]).per Settings.paginate
+    end
   end
 
   def create
@@ -22,7 +26,7 @@ class Admin::CitiesController < Admin::BaseController
       redirect_to admin_cities_url
     else
       flash[:danger]= t ".update-failed"
-      redirect_to publisher_rooms_url
+      redirect_to admin_cities_url
     end
   end
 

@@ -10,8 +10,11 @@ class Order < ApplicationRecord
   before_create :save_order_code, :used_coin
   after_update :update_coind_to_wallet
 
-  scope :get_bills, -> { where('status= 1').or(where('status= 2'))
-    .or(where('status= 3')).order(created_at: :desc)}
+  scope :get_bills, -> { where("orders.status != 0").order(created_at: :desc) }
+
+  scope :get_room_by_user, ->(user_id){where "rooms.user_id = ?", "#{user_id}"}
+  scope :get_from_a_month_ago, -> { where "created_at > ? and
+    created_at < ?", 1.months.ago, 0.months.ago }
 
   enum status: {pending: 0, approved: 1, returned: 2, cancel: 3}
 

@@ -1,25 +1,27 @@
-<% provide :page_title, t(".bkreq-title") %>
-<% provide(:active_bkreq, "active") %>
+<% provide :page_title, t(".preq-title") %>
+<% provide(:active_preq, "active") %>
 
 <div class="rreq-container">
-  <% @req_orders.each do |req_order| %>
+  <% @req_publishers.each do |req_publisher| %>
     <div class="card-contain">
-      <div class="card req_orderItem">
-        <h5 class="card-header"><%= "\##{req_order.id} #{req_order.room.name}" %></h5>
+      <div class="card req_publisherItem">
+        <h5 class="card-header"><%=
+          req_publisher.user.name.nil? ? "\##{req_publisher.id} #{req_publisher.user.last_name} #{req_publisher.user.first_name}":
+          "\##{req_publisher.id} #{req_publisher.user.name}" %></h5>
         <div class="card-body">
-          <p class="card-text"><i class="fas fa-calendar-week"></i> <%= t ".date" %>: <%= "#{req_order.time_checkin}"%> -> <%= "#{req_order.time_checkout}"%></p>
-          <p class="card-text"><i class="fas fa-user"></i> <%= t ".user-booking" %>: <%= req_order.user.name %></p>
-          <p class="card-text"><i class="fas fa-coins"></i> <%= t ".total-price" %>: <%= req_order.total_price %>đ</h5>
-          <p class="card-text"><small class="text-muted"><%= time_when_create_order(req_order.created_at) %></small></p>
-          <%= link_to "Accept", publisher_accept_request_path(id: req_order.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
-          <%= link_to "Cancel", publisher_delete_request_path(id: req_order.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
+          <p>Address: <%= req_publisher.address %></p>
+          <p>Age: <%= req_publisher.age %></p>
+          <p>Gender: <%= req_publisher.gender %></p>
+          <p class="card-text"><small class="text-muted"><%= time_when_create_order(req_publisher.created_at) %></small></p>
+          <%= link_to "Accept", admin_accept_req_user_path(id: req_publisher.user.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
+          <%= link_to "Delete", admin_delete_req_user_path(id: req_publisher.user.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
         </div>
       </div>
       <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
         <div id="liveToast" class="toast toast-approve hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
           <div class="toast-header">
             <i class="fas fa-upload"></i>
-            <strong class="mr-auto">ID: <%= "\##{req_order.id}" %></strong>
+            <strong class="mr-auto">ID: <%= "\##{req_publisher.id}" %></strong>
             <small><%= t ".just" %></small>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -35,7 +37,7 @@
         <div id="liveToast" class="toast toast-cancel hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
           <div class="toast-header">
             <i class="fas fa-upload"></i>
-            <strong class="mr-auto">ID: <%= "\##{req_order.id}" %></strong>
+            <strong class="mr-auto">ID: <%= "\##{req_publisher.id}" %></strong>
             <small><%= t ".just" %></small>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
               <span aria-hidden="true">&times;</span>

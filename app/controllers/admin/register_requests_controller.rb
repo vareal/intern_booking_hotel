@@ -2,14 +2,18 @@ class Admin::RegisterRequestsController < Admin::BaseController
   before_action :get_req_room, only: %i(update destroy)
 
   def index
-    @req_rooms = Room.all.get_req_rooms
+    if current_user.nil? || !current_user.admin?
+      redirect_to new_user_session_path
+    else
+      @req_rooms = Room.all.get_req_rooms
+    end
   end
 
   def update
     if @req_room.update(status: 1)
       respond_to :js
     else
-      flash[:danger]= t ".approve-failed"
+      flash[:danger] = t ".approve-failed"
       redirect_to admin_register_requests_url
     end
   end
@@ -18,7 +22,7 @@ class Admin::RegisterRequestsController < Admin::BaseController
     if @req_room.destroy
       respond_to :js
     else
-      flash[:danger]= t ".delete-failed"
+      flash[:danger] = t ".delete-failed"
       redirect_to admin_register_requests_url
     end
   end

@@ -3,35 +3,69 @@
 
 <div class="rreq-container">
   <% @req_rooms.each do |req_room| %>
-    <div class="card req_roomItem">
-      <h5 class="card-header"><%= "\##{req_room.id} #{req_room.name}" %></h5>
-      <div class="card-body">
-        <h5><%= t ".price-col" %>: <%= req_room.price %>đ</h5>
-        <p><%= req_room.description %></p>
-        <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-        <%= link_to "Accept", admin_accept_request_path(id: req_room.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
-        <button type="button" class="btn btn-success modal_click" data-bs-toggle="modal" data-bs-target=<%= "\#req_room_info_modal_#{req_room.id.to_s}" %>>View Register</button>
-        <%= link_to "Delete", admin_delete_request_path(id: req_room.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
+    <div class="card-contain">
+      <div class="card req_roomItem">
+        <h5 class="card-header"><%= "\##{req_room.id} #{req_room.name}" %></h5>
+        <div class="card-body">
+          <h5><%= t ".price-col" %>: <%= req_room.price %>đ</h5>
+          <p><%= req_room.description %></p>
+          <p class="card-text"><small class="text-muted"><%= time_when_create_order(req_room.created_at) %></small></p>
+          <%= link_to "Accept", admin_accept_request_path(id: req_room.id), remote: true, method: :patch, type: "button", data: { confirm: "You sure?" }, class: "btn btn-primary approve-req" %>
+          <button type="button" class="btn btn-success modal_click" data-bs-toggle="modal" data-bs-target=<%= "\#req_room_info_modal_#{req_room.id.to_s}" %>>View Register</button>
+          <%= link_to "Delete", admin_delete_request_path(id: req_room.id), remote: true, method: :delete, type: "button", data: { confirm: "You sure?" }, class: "btn btn-danger delete-req" %>
+        </div>
       </div>
-    </div>
-    <div class="modal fade" id=<%= "req_room_info_modal_#{req_room.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <h4>
-              <%= req_room.name %>
-            </h4>
-            <%= image_tag(req_room.images.first, size: "520x440") if req_room.images.present? %>
-            <br>
-            <br>
-            <h5><%= t(".price-col")+": "+req_room.price.to_s %>vnđ</h5>
-            <p><%= t(".status-col") %>:
-              <%= req_room.status %>
-            </p>
-            <p>
-              <%= t(".des") %> : <br>
-              <p><%= req_room.description %></p>
-            </p>
+      <div class="modal fade" id=<%= "req_room_info_modal_#{req_room.id.to_s}" %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h4>
+                <%= req_room.name %>
+              </h4>
+              <%= image_tag(req_room.images.first, size: "520x440") if req_room.images.present? %>
+              <br>
+              <br>
+              <h5><%= t(".price-col")+": "+req_room.price.to_s %>vnđ</h5>
+              <p><%= t(".status-col") %>:
+                <%= req_room.status %>
+              </p>
+              <p>
+                <%= t(".des") %> : <br>
+                <p><%= req_room.description %></p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast toast-approve hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header">
+            <i class="fas fa-upload"></i>
+            <strong class="mr-auto">ID: <%= "\##{req_room.id}" %></strong>
+            <small><%= t ".just" %></small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            <i class="fas fa-check-circle" style="color: #28a745"></i> <%= t ".approve-message" %>
+            <%= link_to "#{current_user.first_name} #{current_user.last_name}", "#", style: "text-decoration: none" %>
+          </div>
+        </div>
+      </div>
+      <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast toast-cancel hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header">
+            <i class="fas fa-upload"></i>
+            <strong class="mr-auto">ID: <%= "\##{req_room.id}" %></strong>
+            <small><%= t ".just" %></small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            <i class="fas fa-check-circle" style="color: #28a745"></i> <%= t ".cancel-message" %>
+            <%= link_to "#{current_user.first_name} #{current_user.last_name}", "#", style: "text-decoration: none" %>
           </div>
         </div>
       </div>

@@ -48,6 +48,30 @@ en:
           p1: Intern Booking Hotel
           p2: Vareal Vietnam
           p3: Business Registration Certificate Number 0108308449
+      register_publisher:
+        welcome-title: Register publisher to take advantage
+                      of business opportunities
+        welcome-desc: Swift, convenient, and safe.
+                      Sign up now for more interests.
+        media-title-1: Lux Credit
+        media-content-1: Earn Lux Coins for each successful
+                      booking and use them for your next trips.
+        media-title-2: Smart functions
+        media-content-2: Check-in and check your receipts
+                        offline. Refund faster and change calendar easier.
+        media-title-3: Simple payment
+        media-content-3: Save card information in My Cards,
+                        much safer and convenient for the next payment.
+        media-title-4: New promotions every day
+        media-content-4: Update promotions from Luxstay and
+                        choose great accommodation at your budget.
+        or: "OR"
+        omiauth-fb: "Continue with Facebook"
+        omiauth-gg: "Continue with Gmail"
+        footer:
+          p1: Intern Booking Hotel
+          p2: Vareal Vietnam
+          p3: Business Registration Certificate Number 0108308449
     admin:
       admin_application:
         admin-page: Admin Page
@@ -61,6 +85,7 @@ en:
           dashboard-btn: Dashboard
           manage-publisher-btn: Manage Publisher
           cities-btn: Cities
+          uproom-requests-btn: Room Requests
           register-requests-btn: Register Requests
     publisher:
       publisher_application:
@@ -120,16 +145,32 @@ en:
     dashboards:
       index:
         dashboards-title: Dashboard
+        new-user: New Users
+        more: More info
+        new-order: New orders
+        new-room: New rooms
+        traffic: Traffic
+        order-per-day: Order per day
+        room-per-day: Room per day
     register_requests:
       index:
-        rreq-title: Register Requests
+        rreq-title: Room Request
         price-col: Price
         status-col: Status
         des: Description
+        just: Just
+        approve-message: Request upload room has been approved by
+        cancel-message: Request upload room has been canceled by
       update:
         approve-failed: Approve Failed
         delete-failed: Delete Failed
         room-not-exist: Room not exist
+    publisher_requests:
+      index:
+        preq-title: Register Request
+        just: Just
+        approve-message: Request publisher has been approved by
+        cancel-message: Request publisher has been canceled by
   publisher:
     publisherpages:
       index:
@@ -160,6 +201,10 @@ en:
       destroy:
         delete-failed: Delete failed
         room-not-exist: Room Not Exist
+      update:
+        update-failed: Update Failed
+      returned:
+        returned-failed: Returned-failed
     manage_bills:
       index:
         mbills-title: Manage Bills
@@ -171,9 +216,22 @@ en:
         total-price: Total price
         approve-message: Request booking has been approved by
         cancel-message: Request booking has been canceled by
+        just: Just
       update:
         approve-failed: Approve Failed
         not-found-request: Not Found Request
       destroy:
         cancel-failed: Cancel Failed
         not-found-request: Not Found Request
+    register:
+      new:
+        account-title: Sign up
+        email-input: Email
+        survey-quest: You know my app by?
+        password-confirm-input: Password Confirmation
+        submit: Sign up
+        had-acc: Have account?
+        link-login: Login
+        address: Your Adress
+        your-age: Your Age
+        phone-number-input: Phone Number

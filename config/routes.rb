@@ -31,13 +31,16 @@ Rails.application.routes.draw do
 
     namespace :publisher do
       patch "rooms", to: "rooms#update"
+      patch "returned", to: "rooms#returned"
       get "dashboard", to: "publisherpages#index"
       patch "accept_request", to: "booking_requests#update"
       delete "delete_request", to: "booking_requests#destroy"
+      get "register", to: "register#new"
 
       resources :booking_requests
       resources :rooms
       resources :manage_bills
+      resources :register
     end
 
     namespace :admin do
@@ -46,9 +49,12 @@ Rails.application.routes.draw do
       get "login" ,to: "login#new"
       patch "accept_request", to: "register_requests#update"
       delete "delete_request", to: "register_requests#destroy"
+      patch "accept_req_user", to: "publisher_requests#update"
+      delete "delete_req_user", to: "publisher_requests#destroy"
 
       resources :dashboards
       resources :cities
+      resources :publisher_requests
       resources :manage_publishers
       resources :register_requests
     end

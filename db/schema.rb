@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_17_160619) do
+ActiveRecord::Schema.define(version: 2021_06_24_063436) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 2021_06_17_160619) do
     t.integer "coin_using"
   end
 
+  create_table "publisher_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "address"
+    t.integer "age"
+    t.string "gender"
+    t.text "survey_quest"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
+    t.index ["user_id"], name: "index_publisher_infos_on_user_id"
+  end
+
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.integer "price"
@@ -94,13 +106,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_160619) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wallets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "coin"
-    t.integer "user_id"
-    t.integer "order_id"
-    t.index ["order_id"], name: "index_wallets_on_order_id", unique: true
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "images", "rooms"
+  add_foreign_key "publisher_infos", "users"
 end

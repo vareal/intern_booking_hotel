@@ -2,7 +2,11 @@ class Publisher::BookingRequestsController < Publisher::BaseController
   before_action :get_req_order, only: %i(update destroy)
 
   def index
-    @req_orders = Order.pending
+    if current_user.nil? || !current_user.publisher?
+      redirect_to new_user_session_path
+    else
+      @req_orders = Order.joins(:room).get_room_by_user(current_user.id).pending
+    end
   end
 
   def update

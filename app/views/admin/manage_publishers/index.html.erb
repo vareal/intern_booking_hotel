@@ -23,7 +23,7 @@
     <tr>
       <th scope="row"><%= publisher.id %></th>
       <td><%= publisher.first_name+" "+publisher.last_name %></td>
-      <td><%= image_tag(publisher.avatar, size: "52x52") %></td>
+      <td><%= image_tag(publisher.avatar, size: "52x52") if publisher.avatar.present? %></td>
       <td><%= publisher.rooms.count %></td>
       <td>
         <%= link_to "#", class: "badge rounded-pill bg-danger" do %>
