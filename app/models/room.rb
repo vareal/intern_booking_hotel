@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   include Searchable
+  has_one :order
 
   has_many :images
 
