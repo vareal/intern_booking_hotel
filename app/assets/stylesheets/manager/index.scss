@@ -1,4 +1,12 @@
 #manager-page {
+  .brand-link {
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    width: 234px !important;
+    .brand-image {
+      margin-top: 4px;
+    }
+  }
   .main-sidebar {
     .sidebar {
       nav.mt-2 {
@@ -13,14 +21,12 @@
 
             .active {
               background: #f2f7f8;
-              color: #009efb;
-              border-left: 3px solid #009efb;
+              color: #343a40 !important;
             }
 
             .nav-link:hover {
               background-color: #f3f3f3 !important;
               color: #009efb;
-              border-left: 3px solid #009efb;
             }
           }
         }
@@ -28,11 +34,11 @@
     }
   }
   .main-header {
-    background-color: #009efb;
+    background-color: #fff;
     .navbar-nav {
       .nav-item {
         .nav-link {
-          color: #fff;
+          color: rgba(0,0,0,.5);
         }
       }
     }
@@ -57,4 +63,3 @@
     }
   }
 }
-

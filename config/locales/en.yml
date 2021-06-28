@@ -79,7 +79,7 @@ en:
         header:
           Search: Search
           home-link: Home
-          profile-link: Profile
+          profile-link: Contact
           help-link: Help
         sidebar:
           dashboard-btn: Dashboard
@@ -94,7 +94,7 @@ en:
         header:
           Search: Search
           home-link: Home
-          profile-link: Profile
+          profile-link: Contact
           help-link: Help
         sidebar:
           dashboard-btn: Dashboard
