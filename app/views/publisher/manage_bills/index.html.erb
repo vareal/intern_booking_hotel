@@ -10,7 +10,7 @@
         <h5 class="card-title"><%= get_bill_status bill.status %></h5>
         <p class="card-text"><i class="fas fa-calendar-week"></i> <%= t ".date" %>: <%= "#{bill.time_checkin}"%> -> <%= "#{bill.time_checkout}"%></p>
         <p class="card-text"><i class="fas fa-coins"></i> <%= t ".total-price" %>: <%= bill.total_price %>đ</p>
-        <p class="card-text"><small class="text-muted">3 mins ago</small></p>
+        <p class="card-text"><small class="text-muted"><%= time_when_create_order(bill.created_at) %></small></p>
       </div>
     </div>
   <% end %>

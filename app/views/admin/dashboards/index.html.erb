@@ -1,2 +1,79 @@
 <% provide :page_title, t(".dashboards-title") %>
 <% provide(:active_dboard, "active") %>
+
+<div class="dashboard">
+  <div class="row">
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3><%= @newusers %></h3>
+
+          <p><%= t ".new-user" %></p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-user-friends"></i>
+        </div>
+        <a href="#" class="small-box-footer"><%= t ".more" %> <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3><%= @total_of_order %></h3>
+
+          <p><%= t ".new-order" %></p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-clipboard"></i>
+        </div>
+        <a href="#" class="small-box-footer"><%= t ".more" %> <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3><%= @total_of_room %></h3>
+
+          <p><%= t ".new-room" %></p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <a href="#" class="small-box-footer"><%= t ".more" %> <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>65</h3>
+
+          <p><%= t ".traffic" %></p>
+        </div>
+        <div class="icon">
+          <i class="far fa-eye"></i>
+        </div>
+        <a href="#" class="small-box-footer"><%= t ".more" %> <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="card-header ui-sortable-handle">
+    <h3 class="card-title">
+      <i class="fas fa-chart-area"></i>
+      <%= t ".order-per-day" %>
+    </h3>
+  </div>
+  <%= area_chart Order.group_by_day(:created_at).count, library: {vAxis: {title: "Order"}, hAxis: {title: 'Date'}} %>
+
+  <br>
+  <div class="card-header ui-sortable-handle">
+    <h3 class="card-title">
+      <i class="fas fa-chart-area"></i>
+      <%= t ".room-per-day" %>
+    </h3>
+  </div>
+  <%= area_chart Room.group_by_day(:created_at).count, library: {vAxis: {title: "Room"}, hAxis: {title: 'Date'}} %>
+
+</div>

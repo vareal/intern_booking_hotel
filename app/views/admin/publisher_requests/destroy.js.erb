@@ -1,6 +1,6 @@
 $('.delete-req').bind('ajax:success', function() {
   var a = $(this).closest('.card-contain').find('.toast-cancel');
-  $(this).closest('.req_roomItem').fadeOut(100);
+  $(this).closest('.req_publisherItem').fadeOut(100);
   a.removeClass('hide');
   a.addClass('show');
   setTimeout(function() {

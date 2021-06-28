@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.admin?
       admin_root_path
+    elsif resource.publisher?
+      publisher_dashboard_path
     else
       root_url
     end

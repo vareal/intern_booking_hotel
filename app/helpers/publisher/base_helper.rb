@@ -4,6 +4,12 @@ module Publisher::BaseHelper
     page_title.empty? ? base_title : page_title + " | " + base_title
   end
 
+  def pub_username
+    @sheets = current_user.name.nil? ?
+      "#{current_user.last_name} #{current_user.first_name}":
+      current_user.name
+  end
+
   def get_status status
     badges = case status.to_sym
       when :using

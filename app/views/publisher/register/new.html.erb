@@ -1,0 +1,33 @@
+<% provide :page_title, "Register Publisher" %>
+
+<%= form_for @publisher_info, url: publisher_register_path, class: "account__body" do |f| %>
+  <div class="input-group">
+    <%= f.text_field :address, autofocus: true,
+      class: "input fix-borderRadius form-control",
+      placeholder: t(".address"), autocomplete: "off" %>
+    <span class="input-group-text">
+      <i class="fas fa-signature"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :age, autofocus: true,
+      class: "input fix-borderRadius form-control",
+      placeholder: t(".your-age"), autocomplete: "off" %>
+    <span class="input-group-text">
+      <i class="fas fa-signature"></i>
+    </span>
+  </div>
+  <div class="input-group">
+    <%= f.select(:gender, [ "Male", "Female" ], {}, { :class => "form-select" }) %>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :survey_quest, class: "input fix-borderRadius
+      form-control", autocomplete: "off",
+      placeholder: t(".survey-quest") %>
+    <span class="input-group-text">
+      <i class="fas fa-signature"></i>
+    </span>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit t(".submit"), class: "btn btn-primary" %>
+<% end %>

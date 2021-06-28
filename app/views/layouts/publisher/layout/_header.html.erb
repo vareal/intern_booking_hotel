@@ -65,7 +65,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <%= link_to "#", class: "nav-link", data: { toggle: "dropdown"} do %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
         <i class="fas fa-sign-out-alt"></i>
         <span class="badge badge-warning navbar-badge"></span>
       <% end %>

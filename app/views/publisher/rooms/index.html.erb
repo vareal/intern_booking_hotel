@@ -30,7 +30,9 @@
       <tr>
         <th scope="row"><%= room.id %></th>
         <td class="modal_click" data-bs-toggle="modal" data-bs-target=<%= "#room_info_modal"+room.id.to_s %>>
-          <%= room.name %>
+          <p class="room-name">
+            <%= room.name %>
+          </p>
         </td>
 
         <td>
@@ -52,6 +54,11 @@
           <%= link_to publisher_room_path(id: room.id),remote: true , method: :delete, data: { confirm: "You sure?" }, class: "badge rounded-pill bg-danger room-item" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
+          <% if room.using? %>
+            <%= link_to publisher_returned_path(id: room.id), method: :patch, class: "badge rounded-pill bg-success" do %>
+              <i class="fas fa-check"></i>
+            <% end %>
+          <% end %>
         </td>
       </tr>
       <div class="modal fade" id=<%= "edit"+room.id.to_s %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,6 +70,7 @@
             </div>
             <div class="modal-body">
               <%= form_for room, url: {action: :update, controller: "publisher/rooms"} do |f| %>
+                <%= f.hidden_field :id %>
                 <%= f.label :name %>
                 <%= f.text_field :name, class: "form-control", autocomplete: "off" %>
                 <%= f.label :price %>
@@ -128,8 +136,11 @@
           <%= f.label :select_city %>
           <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select a City"}, {class:"form-select"} %>
 
+          <%= f.hidden_field :user_id, value: current_user.id %>
+
           <%= f.label :image %>
           <%= f.file_field :images, multiple: true, class: "form-control", autocomplete: "off" %>
+
           <br>
           <%= f.submit "Publish", class: "btn btn-success" %>
         <% end %>
