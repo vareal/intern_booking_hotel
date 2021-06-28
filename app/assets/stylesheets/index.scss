@@ -24,3 +24,27 @@
   -webkit-line-clamp: 1;
   overflow: hidden; width: 320px;
 }
+
+.layout-fixed {
+  .main-sidebar {
+    .info{
+      a{
+        color: #c2c7d0;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+      }
+    }
+    background-color: #343a40;
+    .nav-link{
+      color: #c2c7d0 !important;
+    }
+    .nav-link:hover {
+      color: #343a40 !important;
+    }
+    .active {
+      color: #343a40 !important;
+    }
+  }
+}
