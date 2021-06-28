@@ -25,6 +25,8 @@ gem "rack-cors"
 gem "active_model_serializers"
 gem "chartkick"
 gem "groupdate"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

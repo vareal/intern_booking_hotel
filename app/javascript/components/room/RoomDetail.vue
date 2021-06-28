@@ -242,14 +242,6 @@ export default {
     }
   },
 
-  filters: {
-    format_price: function(price){
-      return price.toLocaleString('it-IT',
-                                  {style : 'currency',
-                                  currency : 'VND'});
-    }
-  },
-
   computed: {
     total_price(){
       if(localStorage.quatityday){

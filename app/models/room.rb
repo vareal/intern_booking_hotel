@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+  include Searchable
+
   has_many :images
 
   has_many_attached :images

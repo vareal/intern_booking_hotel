@@ -131,6 +131,19 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
+    elasticsearch (7.13.1)
+      elasticsearch-api (= 7.13.1)
+      elasticsearch-transport (= 7.13.1)
+    elasticsearch-api (7.13.1)
+      multi_json
+    elasticsearch-model (7.1.1)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (7.1.1)
+    elasticsearch-transport (7.13.1)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
@@ -339,6 +352,8 @@ DEPENDENCIES
   chartkick
   config
   devise
+  elasticsearch-model
+  elasticsearch-rails
   faker
   figaro
   groupdate

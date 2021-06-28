@@ -62,7 +62,7 @@
               <td>{{ order.code }}</td>
               <td>{{ order.time_checkin }}</td>
               <td>{{ order.time_checkout }}</td>
-              <td>{{ order.total_price }}</td>
+              <td>{{ order.total_price | format_price }}</td>
               {{ status_badges(order.status) }}
               <td class="status_order">
                 <span class="badge rounded-pill badge"

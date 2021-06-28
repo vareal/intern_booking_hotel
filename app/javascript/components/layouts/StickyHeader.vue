@@ -7,7 +7,7 @@
             <i class="fas fa-search"></i>
             <div class="IconBox__child">
               <input placeholder="Nhập điểm du lịch hoặc tên khách sạn"
-                v-model="room.name"
+                v-model="name_room"
               >
             </div>
           </div>
@@ -78,7 +78,11 @@
           </div>
         </div>
         <div class="submit-button">
-          <button type="button" class="btn button-agoda">TÌM</button>
+          <button type="button" class="btn button-agoda"
+            @click="get_room(name_room)"
+          >
+            TÌM
+          </button>
         </div>
       </div>
     </div>
@@ -89,13 +93,12 @@
   import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
 
   export default {
-    props: ['room'],
-
     data: function(){
       return {
         show: false,
         adult: 1,
-        child: 0
+        child: 0,
+        name_room: this.$route.query.name,
       }
     },
     methods: {
@@ -148,7 +151,6 @@
           "is-disabled": person == 1
         }
       },
-
     },
 
     computed: {
