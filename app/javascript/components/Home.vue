@@ -1,6 +1,7 @@
 <template>
   <div class="home-container">
     <section class="title-container-column">
+      <div class="backGround"></div>
       <SearchOption/>
       <ListCity/>
       <SuggestHotel/>

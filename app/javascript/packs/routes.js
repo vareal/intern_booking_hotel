@@ -5,6 +5,7 @@ import Profile from '../components/layouts/Profile'
 import OrderHistory from '../components/orders/OrderHistory'
 import Coin from '../components/payment/Coin'
 import SearchPage from '../components/search/SearchPage'
+import ListRoomCity from '../components/room/ListRoomCity.vue'
 
 export const routes = [
   {
@@ -43,5 +44,10 @@ export const routes = [
     path: '/search-page/:name',
     name: 'SearchPage',
     component: SearchPage
+  },
+  {
+    path: '/city/:name',
+    name: 'ListRoomCity',
+    component: ListRoomCity
   }
 ]
