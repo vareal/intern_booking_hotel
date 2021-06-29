@@ -18,21 +18,21 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="py--12 px--18 bg-white is-shadow-box">
-                        1 Khách
+                        {{ total_person() }} Khách
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="input-wraper">
                   <label class="input-wraper__label bold is-block">
-                    Name Room
+                    {{ room_name }}
                   </label>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="p--12 is-shadow-box rounded bg-white">
                         <div class="is-decorate is-green"></div>
                         <p class="c-gray-9 mb--0">Nhận phòng</p>
-                        <p class="p--giant mb--0">{{ checkin_time }}</p>
+                        <p class="p--giant mb--0">{{ check_in | format_date }}</p>
                         <p class="p--small-2 c-gray-9 mb--0">
                           {{getDay(check_in)}}
                         </p>
@@ -42,7 +42,7 @@
                       <div class="p--12 is-shadow-box rounded bg-white">
                         <div class="is-decorate is-orange"></div>
                         <p class="c-gray-9 mb--0">Trả phòng</p>
-                        <p class="p--giant mb--0">{{ checkout_time }}</p>
+                        <p class="p--giant mb--0">{{ check_out | format_date  }}</p>
                         <p class="p--small-2 c-gray-9 mb--0">
                           {{getDay(check_out)}}
                         </p>
@@ -68,7 +68,7 @@
                 <div class="checkup__header">
                   <a href="#" class="is-flex">
                     <div class="grow">
-                      <h4 class="checkup__title">Tên Phòng</h4>
+                      <h4 class="checkup__title">{{ room_name }}</h4>
                       <div class="checkup__add">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Hoàn Kiếm, Hà Nội, Vietnam</span>
@@ -87,21 +87,22 @@
                       </span>
                       <span class="content">
                         <b>{{ quatityday }} đêm</b>
-                        {{ checkin_time }} - {{ checkout_time }}
+                        {{ check_in | format_date  }} -
+                        {{ check_out | format_date }}
                       </span>
                     </div>
                     <div class="is-flex middle-xs">
                       <span>
                         <img src="./pic1.svg">
                       </span>
-                      <span class="content"> 2 người </span>
+                      <span class="content"> {{ total_person() }} người </span>
                     </div>
                   </div>
                   <div class="checkup__price fadeIn">
                     <div class="middle-xs between-xs">
                       <div class="is-flex align-center">
                         <span class="pr--6">Giá thuê {{ quatityday }} đêm</span>
-                        <span>{{ money }}</span>
+                        <span>{{ before_price | format_price }}</span>
                       </div>
                       <div class="is-flex align-center coin-mark">
                         <span class="pr--6"  @click="active_modal()">
@@ -128,7 +129,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="checkup__footer"></div>
+                <div class="checkup__footer">
+                  <div class="input-group-foot">
+                    <label class="input-group__label bold is-block">
+                      Chính sách hủy phòng
+                    </label>
+                    <span class="input-group__text">
+                      <b>Nghiêm ngặt</b>
+                      : Hoàn lại 50% giá trị đặt phòng khi khách hàng huỷ phòng
+                      trong vòng 48h sau khi đặt phòng thành công và trước 14
+                      ngày so với thời gian check-in. Sau đó, hủy phòng trước
+                      14 ngày so với thời gian check-in, được hoàn lại 50% tổng
+                      số tiền đã trả (trừ phí dịch vụ).
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -186,13 +201,17 @@
   export default {
     data() {
       return {
+        room_name: localStorage.name_room,
         check_in: localStorage.check_in,
         check_out: localStorage.check_out,
         quatityday: localStorage.quatityday,
+        price: localStorage.price,
         total_price: localStorage.quatityday * localStorage.price,
         room_id: localStorage.room_id,
         active: false,
         payed_coin: '',
+        old_person: localStorage.old_person,
+        child_person: localStorage.child_person
       }
     },
 
@@ -205,7 +224,9 @@
               time_checkout: this.check_out,
               total_price: this.total_price,
               room_id: this.room_id,
-              coin_using: this.$store.getters.using_coin
+              coin_using: this.$store.getters.using_coin,
+              capacity_adult: this.old_person,
+              capacity_child: this.child_person
             }
           })
         } catch (error) {
@@ -217,12 +238,20 @@
       },
 
       redirect_to_after_create(){
+        this.$swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Đặt phòng thành công',
+          showConfirmButton: false,
+          timer: 2000
+        })
+
         this.$router.push('/')
       },
 
       remove_store_after_create(){
-        let keysToRemove = ["check_in", "check_out", "quatityday", "price",
-          "room_id"];
+        let keysToRemove = ["name_room","check_in", "check_out", "quatityday", "price",
+          "room_id", "coin_using", "old_person", "child_person"];
         keysToRemove.forEach(k => localStorage.removeItem(k))
       },
 
@@ -255,24 +284,15 @@
 
     mounted(){
       this.$store.commit('UNLAYOUT')
-      this.$store.dispatch('format_date_checkin_time', this.check_in)
-      this.$store.dispatch('format_date_checkout_time', this.check_out)
-      this.$store.dispatch('format_money', this.total_price)
       this.$store.dispatch('get_Coins')
     },
 
     computed:{
-      ...mapGetters(['checkin_time', 'checkout_time', 'money', 'coins',
-        'using_coin']),
+      before_price() {
+        return this.price * this.quatityday
+      },
+      ...mapGetters(['coins', 'using_coin']),
     },
-
-    filters: {
-      format_price(price){
-        return parseInt(price).toLocaleString('it-IT',
-                                  {style : 'currency',
-                                  currency : 'VND'});
-    }
-  },
 
     components:{
       LayoutsHeaderBooking

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import getuser from './modules/getUser'
-import format from './modules/format'
 import getcity from './modules/getCity'
 import getorder from './modules/getOrder'
 import getcoin from './modules/getCoin'
@@ -23,7 +22,6 @@ const storeData = {
 
   modules: {
     getuser,
-    format,
     getcity,
     getorder,
     getcoin,

@@ -21,7 +21,11 @@ Vue.mixin({
 
       this.$store.dispatch('get_Room', data)
       this.$store.commit('SET_ROOM_NAME', data)
-    }
+    },
+
+    total_person() {
+      return parseInt(localStorage.old_person) + parseInt(localStorage.child_person)
+    },
   },
 
   filters: {
@@ -29,6 +33,11 @@ Vue.mixin({
       return price.toLocaleString('it-IT',
                                   {style : 'currency',
                                   currency : 'VND'});
+      },
+
+    format_date: function(date){
+      let datetime = new Date(date)
+      return datetime.toLocaleDateString()
     }
   }
 });

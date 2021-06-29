@@ -18,7 +18,7 @@
             <p>
               <span>
                 <span class="quantity">
-                  {{ total_person }}
+                  1
                 </span>
                   Khách
               </span>
@@ -31,20 +31,15 @@
               </div>
               <div class="el-input-number">
                 <span class="el-input-number__decrease"
-                  @click="minus_person_adult($event, adult, room.capacity_adult_person)"
-                  v-bind:class="over_flow_minus_adult(adult, room.capacity_adult_person)"
                 >
                   <i class="fas fa-minus"></i>
                 </span>
                 <div class="el-input">
                   <input type="number" class="input-person"
-                    min="1" :max="room.capacity_adult_person"
-                    v-model="adult"
+                    min="1"
                   >
                 </div>
                 <span class="el-input-number__increase"
-                  @click="plus_person_adult($event, adult, room.capacity_adult_person)"
-                  v-bind:class="over_flow_plus(adult, room.capacity_adult_person)"
                 >
                   <i class="fas fa-plus"></i>
                 </span>
@@ -56,20 +51,15 @@
               </div>
               <div class="el-input-number">
                 <span class="el-input-number__decrease"
-                  @click="minus_person_child($event, child, room.capacity_adult_person)"
-                  v-bind:class="over_flow_minus_child(child, room.capacity_child_person)"
                 >
                   <i class="fas fa-minus"></i>
                 </span>
                 <div class="el-input">
                   <input type="number" class="input-person"
-                    min="0" :max="room.capacity_child_person"
-                    v-model="child"
+                    min="0"
                   >
                 </div>
                 <span class="el-input-number__increase"
-                  @click="plus_person_child($event, child, room.capacity_child_person)"
-                  v-bind:class="over_flow_plus(child, room.capacity_child_person)"
                 >
                   <i class="fas fa-plus"></i>
                 </span>
@@ -104,58 +94,6 @@
     methods: {
       show_person(){
         this.show = !this.show
-      },
-
-      status_person(){
-
-      },
-
-      plus_person_adult(event, person, quatity){
-        if(person < quatity){
-          this.adult ++
-        }
-      },
-
-      minus_person_adult(event, person, quatity){
-        if(person > 1){
-          this.adult --
-        }
-      },
-
-      plus_person_child(event, person, quatity){
-        if(person < quatity){
-          this.child ++
-        }
-      },
-
-      minus_person_child(event, person, quatity){
-        if(person > 0){
-          this.child --
-        }
-      },
-
-      over_flow_plus(person, quatity){
-        return {
-          "is-disabled": person == quatity
-        }
-      },
-
-      over_flow_minus_child(person, quatity){
-        return {
-          "is-disabled": person == 0
-        }
-      },
-
-      over_flow_minus_adult(person, quatity){
-        return {
-          "is-disabled": person == 1
-        }
-      },
-    },
-
-    computed: {
-      total_person(){
-        return this.adult + this.child
       },
     },
 

@@ -60,8 +60,8 @@
             <tr v-for="(order, index) in orders" :key="index">
               <th scope="row">{{ index + 1 }}</th>
               <td>{{ order.code }}</td>
-              <td>{{ order.time_checkin }}</td>
-              <td>{{ order.time_checkout }}</td>
+              <td>{{ order.time_checkin | format_date }}</td>
+              <td>{{ order.time_checkout | format_date }}</td>
               <td>{{ order.total_price | format_price }}</td>
               {{ status_badges(order.status) }}
               <td class="status_order">

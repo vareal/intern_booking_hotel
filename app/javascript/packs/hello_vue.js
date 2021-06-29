@@ -12,7 +12,6 @@ import VueRouter from 'vue-router'
 import { routes } from './routes'
 import store from '../store/index'
 import mixin from './mixin'
-
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -22,6 +21,7 @@ Vue.use(VueSweetalert2);
 Vue.prototype.$axios = axios
 require('../assets/style/index.scss')
 require('../assets/style/main.scss')
+// const Swal = require('sweetalert2')
 
 const router = new VueRouter({
   routes
