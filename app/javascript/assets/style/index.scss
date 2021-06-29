@@ -320,6 +320,10 @@ a.navbar-link::after {
   font-family: mallory,Helvetica Neue,Helvetica,Arial,sans-serif;
 
   .WelcomeMessage {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    color: #fff;
     .WelcomeMessage__wrapper {
       h1 {
         line-height: 1.3;
@@ -1117,4 +1121,20 @@ a.navbar-link::after {
     border-radius: 5px;
     border: 1px solid #ebebeb;
   }
+}
+
+.backGround {
+  width: 100%;
+  height: 320px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+.backGround:before {
+  background: url(../images/background.png) center center / cover no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border-bottom-left-radius: 48px;
 }

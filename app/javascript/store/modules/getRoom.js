@@ -23,6 +23,19 @@ const getRoomModule = {
         console.log(error)
       }
     },
+
+    async getRoomFromCity({commit}, data) {
+      try {
+        const response = await axios.get('v1/room_belongs_to_city_id', {
+          params: {
+            id: data
+          }
+        })
+        commit('SET_ROOM', response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   },
 
   mutations: {

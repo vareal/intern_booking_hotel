@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get "user_page", to: "userpages#home"
       get "list_city", to: "userpages#list_city"
       get "get_room_form_city", to: "cities#show"
+      get "room_belongs_to_city_id", to: "cities#index"
       get "current_user", to: "api#current_user_api"
       get "user_login", to: "api#user_login"
       get "rooms/:id", to: "rooms#show"

@@ -108,6 +108,13 @@ ActiveRecord::Schema.define(version: 2021_06_28_042327) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wallets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "coin"
+    t.integer "user_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_wallets_on_order_id", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "images", "rooms"
   add_foreign_key "publisher_infos", "users"
